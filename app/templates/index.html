@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>Traker Core</title>
+        <link rel="icon" type="image/png" href="../static/images/Traker core logo.png"/>
+        <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <img src="../static/images/Traker core logo bar.png" alt="" width="5%" height="auto">
+                <a class="navbar-brand" href=""><h1>Tracker Core</h1></a>
+                <div class="nav navbar-right">
+                    <button class="btn btn-prymary collapsed navbar-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active ">
+                            <a class="nav-link" href=""><h4>Gráfico</h4></a>
+                        </li>
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href=""><h4>Histórico</h4></a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid ">
+                  
+                      <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Acessos</a>
+                      </div>
+                  
+                      <div class="navbar-nav mr-auto">
+                        <ul class="nav navbar-nav">
+                  
+                          <a class="nav-item nav-link" href="#">Usuários</a>
+                          <a class="nav-item nav-link" href="#">Máquinas</a>
+                  
+                        </ul>
+                  
+                      </div>
+                  
+                      <div class="nav navbar">
+                        <li class="nav-item dropdown">
+                          <div class="dropdown-content">
+                            <li><a class="btn btn-prymary btn-sm" href="#">Atualizar</a></li>
+                            <li><div class="dropdown-divider"></div></li>
+                            <li><a class="btn btn-prymary btn-sm" href="#">Exportar dados</a></li>
+                            <li class="nav-item dropdown">
+                                    <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      Gerenciar
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                      <a class="dropdown-item" href="#">Ação</a>
+                                      <a class="dropdown-item" href="#">Outra ação</a>
+                                      <div class="dropdown-divider"></div>
+                                      <a class="dropdown-item" href="#">Algo mais aqui</a>
+                                    </div>
+                                </li>
+                            <li><div class="dropdown-divider"></div></li>
+                            <li><a class="btn btn-prymary btn-sm" href="#">Salvar</a></li>
+                        </div>
+                        </li>
+                      </div>
+                    </div>
+                  </nav>
+        <div class="corpo">
+            <div class="containerLateral">
+
+            </div>
+            <div class="containers">
+                <h1 class="center">
+                    Imprimindo valores arquivados: 
+                    {% for user in users %}
+                        {{"|" + user["username"] + "|"}}
+                    {% endfor %}
+                </h1>
+            </div>
+        </div>
+        
+    </body>
+</html>

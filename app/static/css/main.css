@@ -1,0 +1,80 @@
+html, body{
+    background: white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    max-width: 300%;
+    background-image: url("../bg-static.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment:fixed;
+    background-size: 100%,100%;
+    
+}
+.corpo{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+.containers{
+    background-color: #f8f9fab4;
+    display: grid;
+    grid-column: span;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    
+}
+.containerLateral{
+    background-color: #343a40b4;
+    width: 15%;
+}
+.right {
+    position: absolute;
+    right: 0px;
+    width: 300px;
+
+    padding: 10px;
+}
+/* Mobile */
+@media (min-width:320px) { 
+
+    .tester {
+        width:100%;
+        height:auto;
+        background-image: url("../bg-static.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment:fixed;
+    }
+}
+
+/* Tablet */
+@media (min-width:640px) {
+
+    .tester {
+        width:100%;
+        height:auto;
+        background-image: url("../bg-static.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment:fixed;
+    }   
+
+}
+
+/* Desktop */
+@media (min-width:960px) {
+
+    .tester {
+        width:100%;
+        height:auto;
+        background-image: url("../bg-static.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment:fixed;
+    }   
+
+}
