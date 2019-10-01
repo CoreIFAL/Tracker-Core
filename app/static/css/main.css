@@ -56,9 +56,6 @@ table {
     text-decoration: none;
     cursor: pointer;
   }
-
-a:hover {
-    background-color: #f8f9fa;
 }
 a:link:active, a:visited:active {
     color: #f8f9fa;

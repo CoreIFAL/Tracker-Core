@@ -98,31 +98,58 @@
                         {{"|" + user["username"] + "|"}}
                     {% endfor %}-->
                 </h4>
-                <table style="width:90%; margin-left: 5%;">
-                    <tr style="background-color: #343a40; color: #f8f9fa">
-                        <th>Firstname</th>
-                        <th>PC</th>
-                        <th>Status</th>
-                    </tr> 
-                    {% for user in users %}
-                      <tr style="background-color: #343a4064; color: #f8f9fa">
-                        <th>{{user["username"]}}</th>
-                        <th>PC TEST</th>
-                        <th>Ativo TEST</th>
-                      </tr>
-                    {% endfor %}
-                  </table>
+                <div class="table">
+                    <div class="table">
+                        <table style="width:90%; margin-left: 5%;">
+                            <tr style="background-color: #343a40; color: #f8f9fa">
+                                <th>Firstname</th>
+                                <th>PC</th>
+                                <th>Status</th>
+                                <th>Date Time</th>
+                            </tr>
+                            {% for user in lista_users %}
+                              {% set u = user['event']['computername'] %}
+                              {% if 'L01' in u %}
+                                <tr class="table-item lab1" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
+                              {% elif 'L02' in u %}
+                                <tr class="table-item lab2" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
+                              {% elif 'L03' in u %}
+                                <tr class="table-item lab3" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
+                              {% elif 'L04' in u %}
+                                <tr class="table-item lab4" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
+                              {% elif 'L05' in u %}
+                                <tr class="table-item lab5" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
+                              {% elif 'L06' in u %}
+                                <tr class="table-item lab6" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
+                              {% else %}
+                                <tr style="background-color: #343a4064; color: #f8f9fa">
+                              {% endif %}
+                                <th>{{user['name']}}</th>
+                                <th>{{user['event']['computername']}}</th>
+                                <th>{{user['event']['operation']}}</th>
+                                <th>{{user['event']['date']}} - {{user['event']['time']}}</th>
+                              </tr>
+                            {% endfor %}
+                          </table>
+                    </div>
+                </div>
+               
+                
             </div>
-            <nav class="containerLateral">
-              <a class="nav-item nav-link lateralLink" href="">LAB 1</a>
-              <a class="nav-item nav-link lateralLink" href="">LAB 2</a>
-              <a class="nav-item nav-link lateralLink" href="">LAB 3</a>
-              <a class="nav-item nav-link lateralLink" href="">LAB 4</a>
-              <a class="nav-item nav-link lateralLink" href="">LAB 5</a>
-              <a class="nav-item nav-link lateralLink" href="">LAB 6</a>
-              <a class="nav-item nav-link lateralLink" href="">Projetos</a>
+            <nav class="filter-button-group containerLateral">
+              <a class="nav-item nav-link lateralLink" data-filter="*" href="">Todos os LABS</a>
+              <a class="nav-item nav-link lateralLink" data-filter=".lab1" href="">LAB 1</a>
+              <a class="nav-item nav-link lateralLink" data-filter=".lab2" href="">LAB 2</a>
+              <a class="nav-item nav-link lateralLink" data-filter=".lab3" href="">LAB 3</a>
+              <a class="nav-item nav-link lateralLink" data-filter=".lab4" href="">LAB 4</a>
+              <a class="nav-item nav-link lateralLink" data-filter=".lab5" href="">LAB 5</a>
+              <a class="nav-item nav-link lateralLink" data-filter=".lab6" href="">LAB 6</a>
+              <a class="nav-item nav-link lateralLink" data-filter=".projetos" href="">Projetos</a>
             </nav>
         </div>
-        
+        <!-- <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="../static/js/ajax.js"></script>
+        <script src="../static/js/selector.js"></script>
     </body>
 </html>
