@@ -29,15 +29,30 @@ body{
 }
 .containerLateral{
     background-color: #343a40;
-    width: 15%;
+    width: 30%;
+}
+.lateralLink{
+    color: #f8f9fa;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+a:hover {
+    background-color: #f8f9fa;
+}
+a:link:active, a:visited:active {
+    color: #f8f9fa;
 }
 .right {
     position: absolute;
     right: 0px;
     width: 300px;
-
     padding: 10px;
 }
+.inactiveLink {
+    pointer-events: none;
+    cursor: default;
+ }
 /* Mobile */
 @media screen and (min-width:320px) { 
 
@@ -54,6 +69,10 @@ body{
         position: relative;
         max-height: 100%;
         min-width: 100%;
+    }
+    .containerLateral{
+        background-color: #343a40;
+        width: 30%;
     }
 }
 
@@ -73,9 +92,14 @@ body{
         position: relative;
         max-height: 100%;
         min-width: 100%;
+    }
+    .containerLateral{
+        background-color: #343a40;
+        width: 30%;
     }   
 
 }
+
 
 /* Desktop */
 @media screen and (min-width:1366px) {
@@ -92,6 +116,10 @@ body{
         position: relative;
         max-height: 83.9%;
         min-width: 100%;
+    }
+    .containerLateral{
+        background-color: #343a40;
+        width: 15%;
     }   
 
 }

@@ -31,7 +31,7 @@
         </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <img src="../static/images/Traker core logo bar.svg" alt="" width="100px" height="auto">
-                <a class="navbar-brand" href=""><h1>Tracker Core</h1></a>
+                <a class="navbar-brand inactiveLink" href=""><h1>Tracker Core</h1></a>
                 <div class="nav navbar-right">
                     <button class="btn btn-prymary collapsed navbar-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -40,11 +40,11 @@
                 <div class="collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active ">
-                            <a class="nav-link" href=""><h4>Gráfico</h4></a>
+                            <a class="nav-link" href=""><h4>Histórico</h4></a>
                         </li>
 
                         <li class="nav-item active">
-                            <a class="nav-link" href=""><h4>Histórico</h4></a>
+                            <a class="nav-link" href=""><h4>Gráfico</h4></a>
                         </li>
 
                     </ul>
@@ -54,7 +54,7 @@
                     <div class="container-fluid ">
                   
                       <div class="navbar-header">
-                        <a class="navbar-brand" href="#">Acessos</a>
+                        <a class="navbar-brand inactiveLink" href="#">Acessos</a>
                       </div>
                   
                       <div class="navbar-nav mr-auto">
@@ -70,7 +70,7 @@
                       <div class="nav navbar">
                         <li class="nav-item dropdown">
                           <div class="dropdown-content">
-                            <li class="nav-item dropdown">
+                            <!--<li class="nav-item dropdown">
                                     <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                       Gerenciar
                                     </a>
@@ -80,7 +80,7 @@
                                       <div class="dropdown-divider"></div>
                                       <a class="dropdown-item" href="#">Algo mais aqui</a>
                                     </div>
-                                </li>
+                                </li>-->
                             <li><a class="btn btn-prymary btn-sm" href="#">Atualizar</a></li>
                             <li><div class="dropdown-divider"></div></li>
                             <li><a class="btn btn-prymary btn-sm" href="#">Salvar</a></li>
@@ -99,9 +99,15 @@
                     {% endfor %}
                 </h4>
             </div>
-            <div class="containerLateral">
-
-              </div>
+            <nav class="containerLateral">
+              <a class="nav-item nav-link lateralLink" href="">LAB 1</a>
+              <a class="nav-item nav-link lateralLink" href="">LAB 2</a>
+              <a class="nav-item nav-link lateralLink" href="">LAB 3</a>
+              <a class="nav-item nav-link lateralLink" href="">LAB 4</a>
+              <a class="nav-item nav-link lateralLink" href="">LAB 5</a>
+              <a class="nav-item nav-link lateralLink" href="">LAB 6</a>
+              <a class="nav-item nav-link lateralLink" href="">Projetos</a>
+            </nav>
         </div>
         
     </body>
