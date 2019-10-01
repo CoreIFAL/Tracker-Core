@@ -20,12 +20,32 @@ body{
 }
 .containers{
     background-color: #f8f9fac8;
+    display: table;
+    grid-column: span;
+    width: 100%;
+    height: 100%;
+    text-align: center;    
+}
+.containersG{
+    background-color: #f8f9fac8;
     display: grid;
     grid-column: span;
     width: 100%;
     height: 100%;
+    text-align: center;    
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+}
+th {
     text-align: center;
-    
+}
+table {
+    border-spacing: 5px;
 }
 .containerLateral{
     background-color: #343a40;
