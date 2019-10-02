@@ -59,8 +59,8 @@ table {
     color: #f8f9fa;
     text-decoration: none;
     cursor: pointer;
-  }
 }
+
 a:link:active, a:visited:active {
     color: #f8f9fa;
 }
