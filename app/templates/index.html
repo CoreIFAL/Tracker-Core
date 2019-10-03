@@ -1,5 +1,6 @@
-<html>
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
     <head>
+        <!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>NOME DA PLANILHA</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->
         <title>Traker Core</title>
         <link rel="icon" type="image/png" href="../static/images/Traker core logo.png"/>
         <link rel="stylesheet" type="text/css" href="../static/css/main.css">
@@ -85,7 +86,7 @@
                                 </li>-->
                             <li><a class="btn btn-prymary btn-sm" href="">Atualizar</a></li>
                             <li><div class="dropdown-divider"></div></li>
-                            <li><a id="btnExport" class="btn btn-prymary btn-sm" value=" Export Table data into Excel "href="#">Salvar</a></li>
+                            <li><a class="btn btn-prymary btn-sm" onclick="salvaPlanilha();" href="#">Salvar</a></li>
                         </div>
                         </li>
                       </div>
@@ -102,16 +103,9 @@
                 </h4>
                 <div class="table">
                     <div class="table">
-                        <table style="width:90%; margin-left: 5%;">
-                            <tr style="background-color: #343a40; color: #f8f9fa">
-                                <th width="32.4%">Usuario</th>
-                                <th width="19.6%">PC</th>
-                                <th width="21.7%">Status</th>
-                                <th width="13.8%">Data - Hora</th>
-                            </tr>
-                        </table>
-                        <div id="tabela" class="table">
-                            <table  style="width:90%; margin-left: 5%;">
+                        <div class="table">
+                            <table id="tabela" style="width:90%; margin-left: 5%;">
+                                
                                 <!--{% for user in lista_users %}
                                 {% set u = user['event']['computername'] %}
                                 {% if 'L01' in u %}
@@ -135,48 +129,57 @@
                                     <th>{{user['event']['date']}} - {{user['event']['time']}}</th>
                                 </tr>
                                 {% endfor %}-->
-                                <tr class="table-item lab1" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
-                                    <th width="32.4%">Nome1</th>
-                                    <th width="19.6%">L01M016</th>
-                                    <th width="21.7%">Logon</th>
-                                    <th width="13.8%">01/10/2019 - 23:12</th>
-                                </tr>
-                                <tr class="table-item lab2" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
-                                    <th width="32.4%">Nome2</th>
-                                    <th width="19.6%">L02M016</th>
-                                    <th width="21.7%">Logon</th>
-                                    <th width="13.8%">01/10/2019 - 23:12</th>
-                                </tr>
-                                <tr class="table-item lab3" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
-                                    <th width="32.4%">Nome3</th>
-                                    <th width="19.6%">L03M016</th>
-                                    <th width="21.7%">Logon</th>
-                                    <th width="13.8%">01/10/2019 - 23:12</th>
-                                </tr>
-                                <tr class="table-item lab4" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
-                                    <th width="32.4%">Nome4</th>
-                                    <th width="19.6%">L04M016</th>
-                                    <th width="21.7%">Logon</th>
-                                    <th width="13.8%">01/10/2019 - 23:12</th>
-                                </tr>
-                                <tr class="table-item lab5" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
-                                    <th width="32.4%">Nome5</th>
-                                    <th width="19.6%">L05M016</th>
-                                    <th width="21.7%">Logon</th>
-                                    <th width="13.8%">01/10/2019 - 23:12</th>
-                                </tr>
-                                <tr class="table-item lab6" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
-                                    <th width="32.4%">Nome6</th>
-                                    <th width="19.6%">L06M016</th>
-                                    <th width="21.7%">Logon</th>
-                                    <th width="13.8%">01/10/2019 - 23:12</th>
-                                </tr>
-                                <tr class="table-item projetos" style="width:90%; margin-left: 5%; background-color: #343a4064; color: #f8f9fa">
-                                    <th width="32.4%">Nome7</th>
-                                    <th width="19.6%">PRJM016</th>
-                                    <th width="21.7%">Logon</th>
-                                    <th width="13.8%">01/10/2019 - 23:12</th>
-                                </tr>
+                                <tbody>
+                                    <tr id="tabelaInfo" class="table-item lab1 lab2 lab3 lab4 lab5 lab6 projetos" style="width:90%; margin-left: 5%;background-color: #343a40; color: #f8f9fa">
+                                        <th width="32.4%">Usuario</th>
+                                        <th width="19.6%">PC</th>
+                                        <th width="21.7%">Status</th>
+                                        <th width="13.8%">Data - Hora(GTM-3)</th>
+                                    </tr>
+                                    <tr id="tabelaInfo" class="table-item lab1" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                        <th width="32.4%">Nome1</th>
+                                        <th width="19.6%">L01M016</th>
+                                        <th width="21.7%">Logon</th>
+                                        <th width="13.8%">01/10/2019 - 23:12</th>
+                                    </tr>
+                                    <tr id="tabelaInfo" class="table-item lab2" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                        <th width="32.4%">Nome2</th>
+                                        <th width="19.6%">L02M016</th>
+                                        <th width="21.7%">Logon</th>
+                                        <th width="13.8%">01/10/2019 - 23:12</th>
+                                    </tr>
+                                    <tr id="tabelaInfo" class="table-item lab3" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                        <th width="32.4%">Nome3</th>
+                                        <th width="19.6%">L03M016</th>
+                                        <th width="21.7%">Logon</th>
+                                        <th width="13.8%">01/10/2019 - 23:12</th>
+                                    </tr>
+                                    <tr id="tabelaInfo" class="table-item lab4" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                        <th width="32.4%">Nome4</th>
+                                        <th width="19.6%">L04M016</th>
+                                        <th width="21.7%">Logon</th>
+                                        <th width="13.8%">01/10/2019 - 23:12</th>
+                                    </tr>
+                                    <tr id="tabelaInfo" class="table-item lab5" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                        <th width="32.4%">Nome5</th>
+                                        <th width="19.6%">L05M016</th>
+                                        <th width="21.7%">Logon</th>
+                                        <th width="13.8%">01/10/2019 - 23:12</th>
+                                    </tr>
+                                    <tr id="tabelaInfo" class="table-item lab6" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                        <th width="32.4%">Nome6</th>
+                                        <th width="19.6%">L06M016</th>
+                                        <th width="21.7%">Logon</th>
+                                        <th width="13.8%">01/10/2019 - 23:12</th>
+                                    </tr>
+                                    <tr id="tabelaInfo" class="table-item projetos" style="width:90%; margin-left: 5%; background-color: #343a4064; color: #000000">
+                                        <th width="32.4%">Nome7</th>
+                                        <th width="19.6%">PRJM016</th>
+                                        <th width="21.7%">Logon</th>
+                                        <th width="13.8%">01/10/2019 - 23:12</th>
+                                    </tr>
+                                </tbody>
+                                
                                 
                                     
                             </table>
@@ -184,10 +187,21 @@
                     </div>
                 </div>
                 <script>
-                    $("#btnExport").click(function (e) {
-                        window.open('data:application/vnd.ms-excel,' + $('#dvData').html());
-                        e.preventDefault();
-                    });
+                    function salvaPlanilha() {
+                        var htmlPlanilha = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Acessos</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>' + document.getElementById("tabela").innerHTML + '</table></body></html>';
+                    
+                        var htmlBase64 = btoa(htmlPlanilha);
+                        var link = "data:application/vnd.ms-excel;base64," + htmlBase64;
+                    
+                        var hyperlink = document.createElement("a");
+                        hyperlink.download = "Acessos Tracker Core dia:";
+                        hyperlink.href = link;
+                        hyperlink.style.display = 'none';
+                    
+                        document.body.appendChild(hyperlink);
+                        hyperlink.click();
+                        document.body.removeChild(hyperlink);
+                    }
                 </script>
                 
             </div>

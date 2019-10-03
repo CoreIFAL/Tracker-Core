@@ -1,192 +1,181 @@
 
-# Created by https://www.gitignore.io/api/venv,flask,python,visualstudiocode
-# Edit at https://www.gitignore.io/?templates=venv,flask,python,visualstudiocode
+# Criado por https://www.gitignore.io/api/venv,flask,python
+# Edite em https://www.gitignore.io/?templates=venv,flask,python
 
-### Flask ###
-instance/*
-!instance/.gitignore
+### Frasco ###
+instância/*
+! instance / .gitignore
 .webassets-cache
 
 ### Flask.Python Stack ###
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+# Arquivos compilados em bytes / otimizados / DLL
+__pycache __ /
+* .py [cod]
+* $ py.class
 
-# C extensions
-*.so
+Extensões # C
+*.tão
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-*.egg-info/
+# Distribuição / embalagem
+.Pitão
+Construir/
+desenvolver ovos /
+dist /
+Transferências/
+ovos/
+.ovos/
+lib /
+lib64 /
+peças /
+sdist /
+var /
+rodas /
+metadados pip-wheel /
+compartilhar / rodas-python /
+* .egg-info /
 .installed.cfg
-*.egg
-MANIFEST
+*.ovo
+MANIFESTO
 
 # PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+# Geralmente, esses arquivos são gravados por um script python a partir de um modelo
+# antes do PyInstaller criar o exe, para injetar data / outras informações nele.
+*.manifesto
+* .spec
 
-# Installer logs
+# Logs do instalador
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
+# Relatórios de teste / cobertura unitária
+htmlcov /
+.tox /
+.nox /
+.cobertura
+.cobertura.*
 .cache
 nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
+cobertura.xml
+*.releitura musical
+.hipótese/
+.pytest_cache /
 
-# Translations
-*.mo
-*.pot
+# Traduções
+* .mo
+*.maconha
 
-# Scrapy stuff:
+# Coisas arranhadas:
 .scrapy
 
-# Sphinx documentation
-docs/_build/
+# Documentação da esfinge
+docs / _build /
 
 # PyBuilder
-target/
+alvo/
 
 # pyenv
 .python-version
 
 # pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
+# De acordo com pypa / pipenv # 598, é recomendável incluir o Pipfile.lock no controle de versão.
+# No entanto, no caso de colaboração, se houver dependências ou dependências específicas da plataforma
+# sem suporte multiplataforma, o pipenv pode instalar dependências que não funcionam ou não
+# instalar todas as dependências necessárias.
+# Pipfile.lock
 
-# celery beat schedule file
-celerybeat-schedule
+# arquivo de programação de batidas de aipo
+aipo-agenda
 
-# SageMath parsed files
-*.sage.py
+# SageMath arquivos analisados
+* .sage.py
 
-# Spyder project settings
+# Configurações do projeto Spyder
 .spyderproject
 .spyproject
 
-# Rope project settings
+# Configurações do projeto de corda
 .ropeproject
 
 # Mr Developer
 .mr.developer.cfg
-.project
+.projeto
 .pydevproject
 
-# mkdocs documentation
-/site
+documentação do # mkdocs
+/local
 
 # mypy
-.mypy_cache/
+.mypy_cache /
 .dmypy.json
 dmypy.json
 
-# Pyre type checker
-.pyre/
+# Verificador de tipo pira
+.pyre /
 
-### Python ###
-# Byte-compiled / optimized / DLL files
+### Pitão ###
+# Arquivos compilados em bytes / otimizados / DLL
 
-# C extensions
+Extensões # C
 
-# Distribution / packaging
+# Distribuição / embalagem
 
 # PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+# Geralmente, esses arquivos são gravados por um script python a partir de um modelo
+# antes do PyInstaller criar o exe, para injetar data / outras informações nele.
 
-# Installer logs
+# Logs do instalador
 
-# Unit test / coverage reports
+# Relatórios de teste / cobertura unitária
 
-# Translations
+# Traduções
 
-# Scrapy stuff:
+# Coisas arranhadas:
 
-# Sphinx documentation
+# Documentação da esfinge
 
 # PyBuilder
 
 # pyenv
 
 # pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
+# De acordo com pypa / pipenv # 598, é recomendável incluir o Pipfile.lock no controle de versão.
+# No entanto, no caso de colaboração, se houver dependências ou dependências específicas da plataforma
+# sem suporte multiplataforma, o pipenv pode instalar dependências que não funcionam ou não
+# instalar todas as dependências necessárias.
 
-# celery beat schedule file
+# arquivo de programação de batidas de aipo
 
-# SageMath parsed files
+# SageMath arquivos analisados
 
-# Spyder project settings
+# Configurações do projeto Spyder
 
-# Rope project settings
+# Configurações do projeto de corda
 
 # Mr Developer
 
-# mkdocs documentation
+documentação do # mkdocs
 
 # mypy
 
-# Pyre type checker
+# Verificador de tipo pira
 
 ### venv ###
 # Virtualenv
 # http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
-[Bb]in
-[Ii]nclude
-[Ll]ib
-[Ll]ib64
-[Ll]ocal
-[Ss]cripts
+[Bb] em
+[Ii] nclude
+[Ll] ib
+Ib64
+[Ll] ocal
+[Ss] cripta
 pyvenv.cfg
 .env
 .venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+env /
+venv /
+ENV /
+env.bak /
+venv.bak /
 pip-selfcheck.json
 
-### VisualStudioCode ###
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-### VisualStudioCode Patch ###
-# Ignore all local history of files
-.history
-
-# End of https://www.gitignore.io/api/venv,flask,python,visualstudiocode
+# Fim de https://www.gitignore.io/api/venv,flask,python
