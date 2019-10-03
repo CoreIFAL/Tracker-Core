@@ -13,6 +13,8 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="../static/js/searchU.js"></script>
+        <script type="text/javascript" src="../static/js/searchM.js"></script>
     </head>
     <body>
         <div class="carousel slide carousel-fade" data-ride="carousel" data-interval="30000">
@@ -59,9 +61,9 @@
                   
                       <div class="navbar-nav mr-auto">
                         <ul class="nav navbar-nav" style="display: flex; flex-direction: row">
-                  
-                          <a class="nav-item nav-link" href="#">Usuários</a>
-                          <a class="nav-item nav-link" href="#" style=" margin-left: 10px">Máquinas</a>
+                            <a id="us"class="nav-item nav-link" data-filter="U" href="#">Usuários</a>
+                            <a id="ma" class="nav-item nav-link" data-filter="M" href="#" style=" margin-left: 10px">Máquinas</a>
+                            <!--<input type="text" id="campoPesquisa" onkeyup="myFunction()" placeholder="Pesquisar">-->
                   
                         </ul>
                   

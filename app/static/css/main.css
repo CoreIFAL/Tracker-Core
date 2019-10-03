@@ -18,6 +18,9 @@ body{
     width: 100%;
     height: 100%;
 }
+#campoPesquisa {
+    border: 1px solid #ddd; /* Add a grey border */
+}
 .containers{
     background-color: #f8f9fac8;
     display: table;
