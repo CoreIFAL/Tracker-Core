@@ -50,13 +50,6 @@ th {
 table {
     border-spacing: 5px;
 }
-table.page-break{
-    page-break-after:always;
-}
-.row-item:nth-child(20n) {
-    page-break-after: always;
-    page-break-inside: avoid;
-}
 .scrollup{
     font-size: 20px;color: black; background-color: #f8f9fac8;
     border: 1px solid #A2A2A2;

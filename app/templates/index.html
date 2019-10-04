@@ -14,8 +14,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="../static/js/searchU.js"></script>
-        <script type="text/javascript" src="../static/js/searchM.js"></script>
+        <script type="text/javascript" src="../static/js/search.js"></script>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
@@ -91,9 +90,49 @@
                   
                       <div class="navbar-nav mr-auto">
                         <ul class="nav navbar-nav" style="display: flex; flex-direction: row">
-                            <a id="us"class="nav-item nav-link" data-filter="U" href="#">Usuários</a>
-                            <a id="ma" class="nav-item nav-link" data-filter="M" href="#" style=" margin-left: 10px">Máquinas</a>
-                            <!--<input type="text" id="campoPesquisa" onkeyup="myFunction()" placeholder="Pesquisar">-->
+                            <a class="nav-item nav-link inactiveLink" href="#">Pesquisar:</a>
+                            <input type="text" id="campoPesquisaU" onblur="addC();" onclick="removeC();" onkeyup="myFunctionU()" placeholder="Pesquisar por Usuario" style="margin-right: 10px">
+                            <input type="text" id="campoPesquisaM" onblur="addC();" onclick="removeC();" onkeyup="myFunctionM()" placeholder="Pesquisar por Maquina" style="margin-right: 5px">
+                            <script>
+                                function removeC() {
+                                    if (document.getElementById("searcher").style.display != ""){
+                                        var $table = $( '.table' ).isotope( {
+                                            itemSelector: '.table-item',
+                                        } );
+                                        document.getElementById("tabela").style.display = "none";
+                                        document.getElementById("searcher").style.display = "";
+                                        $( '.filter-button-group a' ).removeClass( "lab1 lab2 lab3 lab4 lab5 lab6 projetos" );
+
+                                        var filterValue = $( this ).attr( 'data-filter' );
+                                        $table.isotope( {
+                                            filter: filterValue
+                                        } );
+                                        setTimeout( function () {
+
+                                        }, 0 );
+
+                                        return false;
+                                    }
+                                }
+                                
+                                function addC() {
+                                    if (document.getElementById("tabela").style.display != ""){
+                                        var $table = $( '.table' ).isotope( {
+                                            itemSelector: '.table-item',
+                                        } );
+                                        document.getElementById("searcher").style.display = "none";
+                                        document.getElementById("tabela").style.display = "";
+                                        $( this ).addClass( "lab1 lab2 lab3 lab4 lab5 lab6 projetos" );
+
+                                        var filterValue = $( this ).attr( 'data-filter' );
+                                        $table.isotope( {
+                                            filter: filterValue
+                                        } );
+
+                                        return false;
+                                    }
+                                }
+                            </script>
                   
                         </ul>
                   
@@ -130,93 +169,83 @@
                         {{"|" + user["username"] + "|"}}
                     {% endfor %}-->
                 </h4>
-                <div class="table">
-                    <div class="table">
-                        <div class="table">
-                            <table id="tabela" class="display" style="width:90%; margin-left: 5%;">
-                                <thead>
-                                    <tr id="tabelaInfo" class="table-item lab1 lab2 lab3 lab4 lab5 lab6 projetos" style="width:90%; margin-left: 5%;background-color: #343a40; color: #f8f9fa; table { page-break-inside:auto }; tr    { page-break-inside:avoid; page-break-after:auto }; thead { display:table-header-group }; tfoot { display:table-footer-group }">
-                                        <th width="32.4%">Usuario</th>
-                                        <th width="19.6%">PC</th>
-                                        <th width="21.7%">Status</th>
-                                        <th width="11.8%">Data - Hora(GMT-3)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                {% for user in lista_users %}
-                                {% set u = user['event']['computername'] %}
-                                {% if 'L01' in u %}
-                                    <tr id="tabelaInfo" class="table-item lab1" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                {% elif 'L02' in u %}
-                                    <tr id="tabelaInfo" class="table-item lab2" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                {% elif 'L03' in u %}
-                                    <tr id="tabelaInfo" class="table-item lab3" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                {% elif 'L04' in u %}
-                                    <tr id="tabelaInfo" class="table-item lab4" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                {% elif 'L05' in u %}
-                                    <tr id="tabelaInfo" class="table-item lab5" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                {% elif 'L06' in u %}
-                                    <tr id="tabelaInfo" class="table-item lab6" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                {% elif 'PROJ' in u %}
-                                    <tr id="tabelaInfo" class="table-item projetos" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">                                      
-                                {% else %}
-                                    <tr style="background-color: #343a4064; color: #f8f9fa">
-                                {% endif %}
-                                    <th width="32.4%">{{user['name']}}</th>
-                                    <th width="19.6%">{{user['event']['computername']}}</th>
-                                    <th width="21.7%">{{user['event']['operation']}}</th>
-                                    <th width="11.7%">{{user['event']['date']}} - {{user['event']['time']}}</th>
+                <div>
+                    <div>
+                        <table style="width:90%; margin-left: 5%;background-color: #343a40; color: #f8f9fa;">
+                            <thead >
+                                <tr id="tabelaInfo" class="table-item lab1 lab2 lab3 lab4 lab5 lab6 projetos" >
+                                    <th width="32.4%">Usuario</th>
+                                    <th width="19.6%">PC</th>
+                                    <th width="21.7%">Status</th>
+                                    <th width="11.8%">Data - Hora(GMT-3)</th>
                                 </tr>
-                                {% endfor %}
-                                </tbody>
-                                <!--<tbody>
-                                    <tr id="tabelaInfo" class="table-item lab1" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                        <th width="32.4%">Nome1</th>
-                                        <th width="19.6%">L01M016</th>
-                                        <th width="21.7%">Logon</th>
-                                        <th width="11.7%">01/10/2019 - 23:12</th>
+                            </thead>
+                        </table>
+                        
+                        <div>
+                            <div>
+                                <table id="searcher" style="width:90%; margin-left: 5%;display: none">
+                                    <tbody>
+                                    {% for user in lista_users %}
+                                    {% set u = user['event']['computername'] %}
+                                    {% if 'L01' in u %}
+                                        <tr id="tabelaInfo" class="table-item lab1" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    {% elif 'L02' in u %}
+                                        <tr id="tabelaInfo" class="table-item lab2" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    {% elif 'L03' in u %}
+                                        <tr id="tabelaInfo" class="table-item lab3" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    {% elif 'L04' in u %}
+                                        <tr id="tabelaInfo" class="table-item lab4" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    {% elif 'L05' in u %}
+                                        <tr id="tabelaInfo" class="table-item lab5" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    {% elif 'L06' in u %}
+                                        <tr id="tabelaInfo" class="table-item lab6" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    {% elif 'PROJ' in u %}
+                                        <tr id="tabelaInfo" class="table-item projetos" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">                                      
+                                    {% else %}
+                                        <tr style="background-color: #343a4064; color: #f8f9fa">
+                                    {% endif %}
+                                        <th width="32.4%">{{user['name']}}</th>
+                                        <td width="19.6%">{{user['event']['computername']}}</td>
+                                        <td width="21.7%">{{user['event']['operation']}}</td>
+                                        <td width="11.7%">{{user['event']['date']}} - {{user['event']['time']}}</td>
                                     </tr>
-                                    <tr id="tabelaInfo" class="table-item lab2" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                        <th width="32.4%">Nome2</th>
-                                        <th width="19.6%">L02M016</th>
-                                        <th width="21.7%">Logon</th>
-                                        <th width="11.7%">01/10/2019 - 23:12</th>
+                                    {% endfor %}
+                                    </tbody>                                    
+                                </table>
+                            </div>
+                            <div class="table">
+                                <table id="tabela" style="width:90%; margin-left: 5%; display:">
+                                    <tbody>
+                                    {% for user in lista_users %}
+                                    {% set u = user['event']['computername'] %}
+                                    {% if 'L01' in u %}
+                                        <tr id="tabelaInfo" class="table-item lab1" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    {% elif 'L02' in u %}
+                                        <tr id="tabelaInfo" class="table-item lab2" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    {% elif 'L03' in u %}
+                                        <tr id="tabelaInfo" class="table-item lab3" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    {% elif 'L04' in u %}
+                                        <tr id="tabelaInfo" class="table-item lab4" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    {% elif 'L05' in u %}
+                                        <tr id="tabelaInfo" class="table-item lab5" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    {% elif 'L06' in u %}
+                                        <tr id="tabelaInfo" class="table-item lab6" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    {% elif 'PROJ' in u %}
+                                        <tr id="tabelaInfo" class="table-item projetos" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">                                      
+                                    {% else %}
+                                        <tr style="background-color: #343a4064; color: #f8f9fa">
+                                    {% endif %}
+                                        <th width="32.4%">{{user['name']}}</th>
+                                        <td width="19.6%">{{user['event']['computername']}}</td>
+                                        <td width="21.7%">{{user['event']['operation']}}</td>
+                                        <td width="11.7%">{{user['event']['date']}} - {{user['event']['time']}}</td>
                                     </tr>
-                                    <tr id="tabelaInfo" class="table-item lab3" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                        <th width="32.4%">Nome3</th>
-                                        <th width="19.6%">L03M016</th>
-                                        <th width="21.7%">Logon</th>
-                                        <th width="11.7%">01/10/2019 - 23:12</th>
-                                    </tr>
-                                    <tr id="tabelaInfo" class="table-item lab4" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                        <th width="32.4%">Nome4</th>
-                                        <th width="19.6%">L04M016</th>
-                                        <th width="21.7%">Logon</th>
-                                        <th width="11.7%">01/10/2019 - 23:12</th>
-                                    </tr>
-                                    <tr id="tabelaInfo" class="table-item lab5" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                        <th width="32.4%">Nome5</th>
-                                        <th width="19.6%">L05M016</th>
-                                        <th width="21.7%">Logon</th>
-                                        <th width="11.7%">01/10/2019 - 23:12</th>
-                                    </tr>
-                                    <tr id="tabelaInfo" class="table-item lab6" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                        <th width="32.4%">Nome6</th>
-                                        <th width="19.6%">L06M016</th>
-                                        <th width="21.7%">Logon</th>
-                                        <th width="11.7%">01/10/2019 - 23:12</th>
-                                    </tr>
-                                    <tr id="tabelaInfo" class="table-item projetos" style="width:90%; margin-left: 5%; background-color: #343a4064; color: #000000">
-                                        <th width="32.4%">Nome7</th>
-                                        <th width="19.6%">PROJM016</th>
-                                        <th width="21.7%">Logon</th>
-                                        <th width="11.7%">01/10/2019 - 23:12</th>
-                                    </tr>
-                                </tbody>-->
-                                
-                                
-                                    
-                            </table>
+                                    {% endfor %}
+                                    </tbody>                                    
+                                </table>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
