@@ -1,4 +1,4 @@
-body{
+html, body{
     /*background: white;
     display: flex;
     flex-direction: column;
@@ -10,7 +10,7 @@ body{
     background-position: center;
     background-attachment:fixed;
     background-size: 100%,100%;*/
-    
+    height: 100%;
 }
 .corpo{
     display: flex;
@@ -50,13 +50,47 @@ th {
 table {
     border-spacing: 5px;
 }
+table.page-break{
+    page-break-after:always;
+}
+.row-item:nth-child(20n) {
+    page-break-after: always;
+    page-break-inside: avoid;
+}
+.scrollup{
+    font-size: 20px;color: black; background-color: #f8f9fac8;
+    border: 1px solid #A2A2A2;
+    text-align: center;
+    padding: 6px;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 30px;
+    right:30px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+.scrollup:hover {
+    background-color: #343a4064;
+    color: white;
+}
 .containerLateral{
     background-color: #343a40;
     width: 100%;
     height: 100%;
-    /*right: 0;
+    right: 0;
+    top: 0;
     z-index: 0;
-    position: fixed;*/
+    position: fixed
+}
+.containerL{
+    background-color: #343a40;
+    width: 100%;
+    height: 100%;
+    top: 16%;
+    z-index: 1;
 }
 .lateralLink{
     color: #f8f9fa;
@@ -146,6 +180,9 @@ a:link:active, a:visited:active {
         width: 15%;
     }   
 
+}
+@media print {
+    pre, blockquote {page-break-inside: avoid;}
 }
 .carousel-fade .carousel-inner .item {
     opacity: 0;
