@@ -6,7 +6,7 @@ class DB(object):
     @staticmethod
     def init():
         client = pymongo.MongoClient(DB.URI)
-        DB.DATABASE = client['db-tracker01']                                                                                                                                   
+        DB.DATABASE = client['trackerdb-dev']                                                                                                                                   
          
     @staticmethod
     def insert(collection, data):
