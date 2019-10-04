@@ -90,9 +90,10 @@
                   
                       <div class="navbar-nav mr-auto">
                         <ul class="nav navbar-nav" style="display: flex; flex-direction: row">
-                            <a class="nav-item nav-link inactiveLink" href="#">Pesquisar:</a>
-                            <input type="text" id="campoPesquisaU" onblur="addC();" onclick="removeC();" onkeyup="myFunctionU()" placeholder="Pesquisar por Usuario" style="margin-right: 10px">
-                            <input type="text" id="campoPesquisaM" onblur="addC();" onclick="removeC();" onkeyup="myFunctionM()" placeholder="Pesquisar por Maquina" style="margin-right: 5px">
+                            <a id="pesB" class="nav-item nav-link" href="#" style="display:" onclick="removeC();">Pesquisar</a>
+                            <a id="volB" class="nav-item nav-link" href="#" style="display: none;" onclick="addC();">Voltar</a>
+                            <input type="text" id="campoPesquisaU" onkeyup="myFunctionU()" placeholder="Pesquisar por Usuario" style="margin-right: 10px; display: none;">
+                            <input type="text" id="campoPesquisaM" onkeyup="myFunctionM()" placeholder="Pesquisar por Maquina" style="margin-right: 5px; display: none;">
                             <script>
                                 function removeC() {
                                     if (document.getElementById("searcher").style.display != ""){
@@ -100,7 +101,11 @@
                                             itemSelector: '.table-item',
                                         } );
                                         document.getElementById("tabela").style.display = "none";
+                                        document.getElementById("pesB").style.display = "none";
+                                        document.getElementById("volB").style.display = "";
                                         document.getElementById("searcher").style.display = "";
+                                        document.getElementById("campoPesquisaU").style.display = "";
+                                        document.getElementById("campoPesquisaM").style.display = "";
                                         $( '.filter-button-group a' ).removeClass( "lab1 lab2 lab3 lab4 lab5 lab6 projetos" );
 
                                         var filterValue = $( this ).attr( 'data-filter' );
@@ -121,6 +126,10 @@
                                             itemSelector: '.table-item',
                                         } );
                                         document.getElementById("searcher").style.display = "none";
+                                        document.getElementById("campoPesquisaU").style.display = "none";
+                                        document.getElementById("campoPesquisaM").style.display = "none";
+                                        document.getElementById("volB").style.display = "none";
+                                        document.getElementById("pesB").style.display = "";
                                         document.getElementById("tabela").style.display = "";
                                         $( this ).addClass( "lab1 lab2 lab3 lab4 lab5 lab6 projetos" );
 
@@ -270,14 +279,14 @@
             </div>
             <div class="filter-button-group containerLateral">
                 <div class="containerL" style="position: fixed;">
-                        <a class="nav-item nav-link lateralLink" data-filter="*" href="" style="">Todos os LABS</a>
-                        <a class="nav-item nav-link lateralLink" data-filter=".lab1" href="">LAB 1</a>
-                        <a class="nav-item nav-link lateralLink" data-filter=".lab2" href="">LAB 2</a>
-                        <a class="nav-item nav-link lateralLink" data-filter=".lab3" href="">LAB 3</a>
-                        <a class="nav-item nav-link lateralLink" data-filter=".lab4" href="">LAB 4</a>
-                        <a class="nav-item nav-link lateralLink" data-filter=".lab5" href="">LAB 5</a>
-                        <a class="nav-item nav-link lateralLink" data-filter=".lab6" href="">LAB 6</a>
-                        <a class="nav-item nav-link lateralLink" data-filter=".projetos" href="">Projetos</a>
+                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter="*" href="" style="">Todos os LABS</a>
+                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab1" href="">LAB 1</a>
+                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab2" href="">LAB 2</a>
+                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab3" href="">LAB 3</a>
+                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab4" href="">LAB 4</a>
+                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab5" href="">LAB 5</a>
+                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab6" href="">LAB 6</a>
+                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".projetos" href="">Projetos</a>
                         <div class="scrollup fa fa-angle-double-up" title="Go to top"> ^ </div>
                         <script>
                             // scrolltop
