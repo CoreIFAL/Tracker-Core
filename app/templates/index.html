@@ -1,5 +1,6 @@
-<html>
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
     <head>
+        <!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>NOME DA PLANILHA</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->
         <title>Traker Core</title>
         <link rel="icon" type="image/png" href="../static/images/Traker core logo.png"/>
         <link rel="stylesheet" type="text/css" href="../static/css/main.css">
@@ -13,6 +14,8 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="../static/js/searchU.js"></script>
+        <script type="text/javascript" src="../static/js/searchM.js"></script>
     </head>
     <body>
         <div class="carousel slide carousel-fade" data-ride="carousel" data-interval="30000">
@@ -40,11 +43,11 @@
                 <div class="collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active ">
-                            <a class="nav-link" href=""><h4>Histórico</h4></a>
+                            <a class="nav-link"><h4>Histórico</h4></a>
                         </li>
 
                         <li class="nav-item active">
-                            <a class="nav-link" href=""><h4>Gráfico</h4></a>
+                            <a class="nav-link" href="grafico.html"><h4>Gráfico</h4></a>
                         </li>
 
                     </ul>
@@ -59,9 +62,9 @@
                   
                       <div class="navbar-nav mr-auto">
                         <ul class="nav navbar-nav" style="display: flex; flex-direction: row">
-                  
-                          <a class="nav-item nav-link" href="#">Usuários</a>
-                          <a class="nav-item nav-link" href="#" style=" margin-left: 10px">Máquinas</a>
+                            <a id="us"class="nav-item nav-link" data-filter="U" href="#">Usuários</a>
+                            <a id="ma" class="nav-item nav-link" data-filter="M" href="#" style=" margin-left: 10px">Máquinas</a>
+                            <!--<input type="text" id="campoPesquisa" onkeyup="myFunction()" placeholder="Pesquisar">-->
                   
                         </ul>
                   
@@ -81,9 +84,9 @@
                                       <a class="dropdown-item" href="#">Algo mais aqui</a>
                                     </div>
                                 </li>-->
-                            <li><a class="btn btn-prymary btn-sm" href="#">Atualizar</a></li>
+                            <li><a class="btn btn-prymary btn-sm" href="">Atualizar</a></li>
                             <li><div class="dropdown-divider"></div></li>
-                            <li><a class="btn btn-prymary btn-sm" href="#">Salvar</a></li>
+                            <li><a class="btn btn-prymary btn-sm" onclick="salvaPlanilha();" href="#">Salvar</a></li>
                         </div>
                         </li>
                       </div>
@@ -100,51 +103,119 @@
                 </h4>
                 <div class="table">
                     <div class="table">
-                        <table style="width:90%; margin-left: 5%;">
-                            <tr style="background-color: #343a40; color: #f8f9fa">
-                                <th>Firstname</th>
-                                <th>PC</th>
-                                <th>Status</th>
-                                <th>Date Time</th>
-                            </tr>
-                            {% for user in lista_users %}
-                              {% set u = user['event']['computername'] %}
-                              {% if 'L01' in u %}
-                                <tr class="table-item lab1" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
-                              {% elif 'L02' in u %}
-                                <tr class="table-item lab2" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
-                              {% elif 'L03' in u %}
-                                <tr class="table-item lab3" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
-                              {% elif 'L04' in u %}
-                                <tr class="table-item lab4" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
-                              {% elif 'L05' in u %}
-                                <tr class="table-item lab5" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
-                              {% elif 'L06' in u %}
-                                <tr class="table-item lab6" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
-                              {% else %}
-                                <tr style="background-color: #343a4064; color: #f8f9fa">
-                              {% endif %}
-                                <th>{{user['name']}}</th>
-                                <th>{{user['event']['computername']}}</th>
-                                <th>{{user['event']['operation']}}</th>
-                                <th>{{user['event']['date']}} - {{user['event']['time']}}</th>
-                              </tr>
-                            {% endfor %}
-                          </table>
+                        <div class="table">
+                            <table id="tabela" style="width:90%; margin-left: 5%;">
+                                
+                                <!--{% for user in lista_users %}
+                                {% set u = user['event']['computername'] %}
+                                {% if 'L01' in u %}
+                                    <tr class="table-item lab1" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
+                                {% elif 'L02' in u %}
+                                    <tr class="table-item lab2" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
+                                {% elif 'L03' in u %}
+                                    <tr class="table-item lab3" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
+                                {% elif 'L04' in u %}
+                                    <tr class="table-item lab4" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
+                                {% elif 'L05' in u %}
+                                    <tr class="table-item lab5" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
+                                {% elif 'L06' in u %}
+                                    <tr class="table-item lab6" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #f8f9fa">
+                                {% else %}
+                                    <tr style="background-color: #343a4064; color: #f8f9fa">
+                                {% endif %}
+                                    <th>{{user['name']}}</th>
+                                    <th>{{user['event']['computername']}}</th>
+                                    <th>{{user['event']['operation']}}</th>
+                                    <th>{{user['event']['date']}} - {{user['event']['time']}}</th>
+                                </tr>
+                                {% endfor %}-->
+                                <tbody>
+                                    <tr id="tabelaInfo" class="table-item lab1 lab2 lab3 lab4 lab5 lab6 projetos" style="width:90%; margin-left: 5%;background-color: #343a40; color: #f8f9fa">
+                                        <th width="32.4%">Usuario</th>
+                                        <th width="19.6%">PC</th>
+                                        <th width="21.7%">Status</th>
+                                        <th width="11.8%">Data - Hora(GMT-3)</th>
+                                    </tr>
+                                    <tr id="tabelaInfo" class="table-item lab1" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                        <th width="32.4%">Nome1</th>
+                                        <th width="19.6%">L01M016</th>
+                                        <th width="21.7%">Logon</th>
+                                        <th width="11.7%">01/10/2019 - 23:12</th>
+                                    </tr>
+                                    <tr id="tabelaInfo" class="table-item lab2" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                        <th width="32.4%">Nome2</th>
+                                        <th width="19.6%">L02M016</th>
+                                        <th width="21.7%">Logon</th>
+                                        <th width="11.7%">01/10/2019 - 23:12</th>
+                                    </tr>
+                                    <tr id="tabelaInfo" class="table-item lab3" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                        <th width="32.4%">Nome3</th>
+                                        <th width="19.6%">L03M016</th>
+                                        <th width="21.7%">Logon</th>
+                                        <th width="11.7%">01/10/2019 - 23:12</th>
+                                    </tr>
+                                    <tr id="tabelaInfo" class="table-item lab4" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                        <th width="32.4%">Nome4</th>
+                                        <th width="19.6%">L04M016</th>
+                                        <th width="21.7%">Logon</th>
+                                        <th width="11.7%">01/10/2019 - 23:12</th>
+                                    </tr>
+                                    <tr id="tabelaInfo" class="table-item lab5" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                        <th width="32.4%">Nome5</th>
+                                        <th width="19.6%">L05M016</th>
+                                        <th width="21.7%">Logon</th>
+                                        <th width="11.7%">01/10/2019 - 23:12</th>
+                                    </tr>
+                                    <tr id="tabelaInfo" class="table-item lab6" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                        <th width="32.4%">Nome6</th>
+                                        <th width="19.6%">L06M016</th>
+                                        <th width="21.7%">Logon</th>
+                                        <th width="11.7%">01/10/2019 - 23:12</th>
+                                    </tr>
+                                    <tr id="tabelaInfo" class="table-item projetos" style="width:90%; margin-left: 5%; background-color: #343a4064; color: #000000">
+                                        <th width="32.4%">Nome7</th>
+                                        <th width="19.6%">PRJM016</th>
+                                        <th width="21.7%">Logon</th>
+                                        <th width="11.7%">01/10/2019 - 23:12</th>
+                                    </tr>
+                                </tbody>
+                                
+                                
+                                    
+                            </table>
+                        </div>
                     </div>
                 </div>
-               
+                <script>
+                    function salvaPlanilha() {
+                        var htmlPlanilha = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Acessos</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>' + document.getElementById("tabela").innerHTML + '</table></body></html>';
+                    
+                        var htmlBase64 = btoa(htmlPlanilha);
+                        var link = "data:application/vnd.ms-excel;base64," + htmlBase64;
+                    
+                        var hyperlink = document.createElement("a");
+                        hyperlink.download = "Acessos Tracker Core dia:";
+                        hyperlink.href = link;
+                        hyperlink.style.display = 'none';
+                    
+                        document.body.appendChild(hyperlink);
+                        hyperlink.click();
+                        document.body.removeChild(hyperlink);
+                    }
+                </script>
                 
             </div>
             <nav class="filter-button-group containerLateral">
-              <a class="nav-item nav-link lateralLink" data-filter="*" href="">Todos os LABS</a>
-              <a class="nav-item nav-link lateralLink" data-filter=".lab1" href="">LAB 1</a>
-              <a class="nav-item nav-link lateralLink" data-filter=".lab2" href="">LAB 2</a>
-              <a class="nav-item nav-link lateralLink" data-filter=".lab3" href="">LAB 3</a>
-              <a class="nav-item nav-link lateralLink" data-filter=".lab4" href="">LAB 4</a>
-              <a class="nav-item nav-link lateralLink" data-filter=".lab5" href="">LAB 5</a>
-              <a class="nav-item nav-link lateralLink" data-filter=".lab6" href="">LAB 6</a>
-              <a class="nav-item nav-link lateralLink" data-filter=".projetos" href="">Projetos</a>
+                <div style="position: fixed;">
+                        <a class="nav-item nav-link lateralLink" data-filter="*" href="" style="">Todos os LABS</a>
+                        <a class="nav-item nav-link lateralLink" data-filter=".lab1" href="">LAB 1</a>
+                        <a class="nav-item nav-link lateralLink" data-filter=".lab2" href="">LAB 2</a>
+                        <a class="nav-item nav-link lateralLink" data-filter=".lab3" href="">LAB 3</a>
+                        <a class="nav-item nav-link lateralLink" data-filter=".lab4" href="">LAB 4</a>
+                        <a class="nav-item nav-link lateralLink" data-filter=".lab5" href="">LAB 5</a>
+                        <a class="nav-item nav-link lateralLink" data-filter=".lab6" href="">LAB 6</a>
+                        <a class="nav-item nav-link lateralLink" data-filter=".projetos" href="">Projetos</a>
+                </div>
             </nav>
         </div>
         <!-- <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script> -->
