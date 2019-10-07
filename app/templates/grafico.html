@@ -18,16 +18,8 @@
             // Load google charts
             google.charts.load('current', {'packages':['line']});
             google.charts.setOnLoadCallback(drawChart);
-            
-            // Draw the chart and set the chart values
             function drawChart() {
                 var data = new google.visualization.DataTable();
-                /*['Dias', 'Lab1', 'Lab2', 'Lab3', 'Lab4', 'Lab5', 'Lab6', 'Projetos'],
-                ['3 dias atrás',  10,      4,      4,      5,      4,      5,      1],
-                ['2 dias atrás',  12,      5,      8,      3,      4,      9,      0],
-                ['Ontem',  6,       11,      9,      7,      2,      5,      2],
-                ['Hoje',  1,      5,      5,      9,      5,      5,      1]
-            ]);*/
                 data.addColumn('string', 'Acessos');
                 data.addColumn('number', 'LAB 1');
                 data.addColumn('number', 'LAB 2');
