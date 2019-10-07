@@ -72,7 +72,7 @@
                 <div class="collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active ">
-                            <a class="nav-link"><h4>Histórico</h4></a>
+                            <a class="nav-link inactiveLink" href="#"><h4>Histórico</h4></a>
                         </li>
 
                         <li class="nav-item active">
@@ -93,8 +93,8 @@
                         <ul class="nav navbar-nav" style="display: flex; flex-direction: row">
                             <a id="pesB" class="nav-item nav-link" href="#" style="display:" onclick="removeC();">Pesquisar</a>
                             <a id="volB" class="nav-item nav-link" href="#" style="display: none;" onclick="addC();">Voltar</a>
-                            <input type="text" id="campoPesquisaU" onkeyup="myFunctionU()" placeholder="Pesquisar por Usuario" style="margin-right: 10px; display: none;">
-                            <input type="text" id="campoPesquisaM" onkeyup="myFunctionM()" placeholder="Pesquisar por Maquina" style="margin-right: 5px; display: none;">
+                            <input type="text" id="campoPesquisaU" onkeyup="myFunctionU()" onclick="document.getElementById('campoPesquisaM').value = ''" placeholder="Pesquisar por Usuario" style="margin-right: 10px; display: none;">
+                            <input type="text" id="campoPesquisaM" onkeyup="myFunctionM()" onclick="document.getElementById('campoPesquisaU').value = ''" placeholder="Pesquisar por Maquina" style="margin-right: 5px; display: none;">
                             <script>
                                 function removeC() {
                                     if (document.getElementById("searcher").style.display != ""){
@@ -179,88 +179,84 @@
                         {{"|" + user["username"] + "|"}}
                     {% endfor %}-->
                 </h4>
+
                 <div>
-                    <div>
-                        <table style="width:90%; margin-left: 5%;background-color: #343a40; color: #f8f9fa;">
-                            <thead >
-                                <tr id="tabelaInfo" class="table-item lab1 lab2 lab3 lab4 lab5 lab6 projetos mini" >
-                                    <th width="32.4%">Usuario</th>
-                                    <th width="19.6%">PC</th>
-                                    <th width="21.7%">Status</th>
-                                    <th width="11.8%">Data - Hora(GMT-3)</th>
-                                </tr>
-                            </thead>
-                        </table>
-                        
-                        <div>
-                            <div>
-                                <table id="searcher" style="width:90%; margin-left: 5%;display: none">
-                                    <tbody>
-                                    {% for user in lista_users %}
-                                    {% set u = user['event']['computername'] %}
-                                    {% if 'L01' in u %}
-                                        <tr id="tabelaInfo" class="table-item lab1" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                    {% elif 'L02' in u %}
-                                        <tr id="tabelaInfo" class="table-item lab2" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                    {% elif 'L03' in u %}
-                                        <tr id="tabelaInfo" class="table-item lab3" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                    {% elif 'L04' in u %}
-                                        <tr id="tabelaInfo" class="table-item lab4" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                    {% elif 'L05' in u %}
-                                        <tr id="tabelaInfo" class="table-item lab5" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                    {% elif 'L06' in u %}
-                                        <tr id="tabelaInfo" class="table-item lab6" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                    {% elif 'PROJ' in u %}
-                                        <tr id="tabelaInfo" class="table-item projetos" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000"> 
-                                    {% elif 'MINI' in u %}
-                                        <tr id="tabelaInfo" class="table-item mini" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">                                     
-                                    {% else %}
-                                        <tr style="background-color: #343a4064; color: #f8f9fa">
-                                    {% endif %}
-                                        <th width="32.4%">{{user['name']}}</th>
-                                        <td width="19.6%">{{user['event']['computername']}}</td>
-                                        <td width="21.7%">{{user['event']['operation']}}</td>
-                                        <td width="11.7%">{{user['event']['date']}} - {{user['event']['time']}}</td>
-                                    </tr>
-                                    {% endfor %}
-                                    </tbody>                                    
-                                </table>
-                            </div>
-                            <div class="table">
-                                <table id="tabela" style="width:90%; margin-left: 5%; display:">
-                                    <tbody>
-                                    {% for user in lista_users %}
-                                    {% set u = user['event']['computername'] %}
-                                    {% if 'L01' in u %}
-                                        <tr id="tabelaInfo" class="table-item lab1" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                    {% elif 'L02' in u %}
-                                        <tr id="tabelaInfo" class="table-item lab2" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                    {% elif 'L03' in u %}
-                                        <tr id="tabelaInfo" class="table-item lab3" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                    {% elif 'L04' in u %}
-                                        <tr id="tabelaInfo" class="table-item lab4" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                    {% elif 'L05' in u %}
-                                        <tr id="tabelaInfo" class="table-item lab5" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                    {% elif 'L06' in u %}
-                                        <tr id="tabelaInfo" class="table-item lab6" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                    {% elif 'PROJ' in u %}
-                                        <tr id="tabelaInfo" class="table-item projetos" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                    {% elif 'MINI' in u %}
-                                        <tr id="tabelaInfo" class="table-item mini" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">                                      
-                                    {% else %}
-                                        <tr style="background-color: #343a4064; color: #f8f9fa">
-                                    {% endif %}
-                                        <th width="32.4%">{{user['name']}}</th>
-                                        <td width="19.6%">{{user['event']['computername']}}</td>
-                                        <td width="21.7%">{{user['event']['operation']}}</td>
-                                        <td width="11.7%">{{user['event']['date']}} - {{user['event']['time']}}</td>
-                                    </tr>
-                                    {% endfor %}
-                                    </tbody>                                    
-                                </table>
-                            </div>
-                            
-                        </div>
+                    <table style="width:90%; margin-left: 5%;background-color: #343a40; color: #f8f9fa;">
+                        <thead >
+                            <tr id="tabelaInfo" class="table-item lab1 lab2 lab3 lab4 lab5 lab6 projetos mini" >
+                                <th width="32.4%">Usuario</th>
+                                <th width="19.6%">PC</th>
+                                <th width="21.7%">Status</th>
+                                <th width="11.8%">Data - Hora(GMT-3)</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>  
+                <div>
+                    <table id="searcher" style="width:90%; margin-left: 5%;display: none">
+                        <tbody>
+                        {% for user in lista_users %}
+                        {% set u = user['event']['computername'] %}
+                        {% if 'L01' in u %}
+                            <tr id="tabelaInfo" class="table-item lab1" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                        {% elif 'L02' in u %}
+                            <tr id="tabelaInfo" class="table-item lab2" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                        {% elif 'L03' in u %}
+                            <tr id="tabelaInfo" class="table-item lab3" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                        {% elif 'L04' in u %}
+                            <tr id="tabelaInfo" class="table-item lab4" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                        {% elif 'L05' in u %}
+                            <tr id="tabelaInfo" class="table-item lab5" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                        {% elif 'L06' in u %}
+                            <tr id="tabelaInfo" class="table-item lab6" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                        {% elif 'PROJ' in u %}
+                            <tr id="tabelaInfo" class="table-item projetos" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000"> 
+                        {% elif 'MINI' in u %}
+                            <tr id="tabelaInfo" class="table-item mini" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">                                     
+                        {% else %}
+                            <tr style="background-color: #343a4064; color: #f8f9fa">
+                        {% endif %}
+                            <th width="32.4%">{{user['name']}}</th>
+                            <td width="19.6%">{{user['event']['computername']}}</td>
+                            <td width="21.7%">{{user['event']['operation']}}</td>
+                            <td width="11.7%">{{user['event']['date']}} - {{user['event']['time']}}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>                                    
+                    </table>
+                    </div>
+                <div class="table">
+                    <table id="tabela" style="width:90%; margin-left: 5%; display:">
+                        <tbody>
+                        {% for user in lista_users %}
+                        {% set u = user['event']['computername'] %}
+                        {% if 'L01' in u %}
+                            <tr id="tabelaInfo" class="table-item lab1" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                        {% elif 'L02' in u %}
+                            <tr id="tabelaInfo" class="table-item lab2" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                        {% elif 'L03' in u %}
+                            <tr id="tabelaInfo" class="table-item lab3" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                        {% elif 'L04' in u %}
+                            <tr id="tabelaInfo" class="table-item lab4" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                        {% elif 'L05' in u %}
+                            <tr id="tabelaInfo" class="table-item lab5" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                        {% elif 'L06' in u %}
+                            <tr id="tabelaInfo" class="table-item lab6" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                        {% elif 'PROJ' in u %}
+                            <tr id="tabelaInfo" class="table-item projetos" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                        {% elif 'MINI' in u %}
+                            <tr id="tabelaInfo" class="table-item mini" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">                                      
+                        {% else %}
+                            <tr style="background-color: #343a4064; color: #f8f9fa">
+                        {% endif %}
+                            <th width="32.4%">{{user['name']}}</th>
+                            <td width="19.6%">{{user['event']['computername']}}</td>
+                            <td width="21.7%">{{user['event']['operation']}}</td>
+                            <td width="11.7%">{{user['event']['date']}} - {{user['event']['time']}}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>                                    
+                    </table>
                     </div>
                 </div>
                 <script>
@@ -282,29 +278,29 @@
                 </script>
                 
             </div>
-            <div class="filter-button-group containerLateral">
-                <div class="containerL" style="position: fixed;">
-                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter="*" href="">Todos os LABS</a>
-                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab1" href="">LAB 1</a>
-                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab2" href="">LAB 2</a>
-                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab3" href="">LAB 3</a>
-                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab4" href="">LAB 4</a>
-                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab5" href="">LAB 5</a>
-                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab6" href="">LAB 6</a>
-                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".projetos" href="">Projetos</a>
-                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".mini" href="">Mini auditório</a>
-                        <div class="scrollup fa fa-angle-double-up" title="Go to top"> ^ </div>
-                        <script>
-                            // scrolltop
-                        $('.scrollup').click(function (){
-                        $("html,body").animate({
-                        scrollTop: 0
-                        }, 1000);
-                        return false;
-                        });
-                        </script>
-                </div>
+        <div class="filter-button-group containerLateral">
+            <div class="containerL" style="position: fixed;">
+                    <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter="*" href="">Todos os LABS</a>
+                    <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab1" href="">LAB 1</a>
+                    <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab2" href="">LAB 2</a>
+                    <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab3" href="">LAB 3</a>
+                    <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab4" href="">LAB 4</a>
+                    <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab5" href="">LAB 5</a>
+                    <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab6" href="">LAB 6</a>
+                    <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".projetos" href="">Projetos</a>
+                    <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".mini" href="">Mini auditório</a>
+                    <div class="scrollup fa fa-angle-double-up" title="Go to top"> ^ </div>
+                    <script>
+                        // scrolltop
+                    $('.scrollup').click(function (){
+                    $("html,body").animate({
+                    scrollTop: 0
+                    }, 1000);
+                    return false;
+                    });
+                    </script>
             </div>
+        </div>
         </div>
         <!-- <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script> -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
