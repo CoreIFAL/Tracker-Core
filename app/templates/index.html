@@ -183,7 +183,7 @@
                     <div>
                         <table style="width:90%; margin-left: 5%;background-color: #343a40; color: #f8f9fa;">
                             <thead >
-                                <tr id="tabelaInfo" class="table-item lab1 lab2 lab3 lab4 lab5 lab6 projetos" >
+                                <tr id="tabelaInfo" class="table-item lab1 lab2 lab3 lab4 lab5 lab6 projetos mini" >
                                     <th width="32.4%">Usuario</th>
                                     <th width="19.6%">PC</th>
                                     <th width="21.7%">Status</th>
@@ -211,7 +211,9 @@
                                     {% elif 'L06' in u %}
                                         <tr id="tabelaInfo" class="table-item lab6" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
                                     {% elif 'PROJ' in u %}
-                                        <tr id="tabelaInfo" class="table-item projetos" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">                                      
+                                        <tr id="tabelaInfo" class="table-item projetos" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000"> 
+                                    {% elif 'MINI' in u %}
+                                        <tr id="tabelaInfo" class="table-item mini" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">                                     
                                     {% else %}
                                         <tr style="background-color: #343a4064; color: #f8f9fa">
                                     {% endif %}
@@ -242,7 +244,9 @@
                                     {% elif 'L06' in u %}
                                         <tr id="tabelaInfo" class="table-item lab6" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
                                     {% elif 'PROJ' in u %}
-                                        <tr id="tabelaInfo" class="table-item projetos" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">                                      
+                                        <tr id="tabelaInfo" class="table-item projetos" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    {% elif 'MINI' in u %}
+                                        <tr id="tabelaInfo" class="table-item mini" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">                                      
                                     {% else %}
                                         <tr style="background-color: #343a4064; color: #f8f9fa">
                                     {% endif %}
@@ -280,7 +284,7 @@
             </div>
             <div class="filter-button-group containerLateral">
                 <div class="containerL" style="position: fixed;">
-                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter="*" href="" style="">Todos os LABS</a>
+                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter="*" href="">Todos os LABS</a>
                         <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab1" href="">LAB 1</a>
                         <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab2" href="">LAB 2</a>
                         <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab3" href="">LAB 3</a>
@@ -288,6 +292,7 @@
                         <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab5" href="">LAB 5</a>
                         <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab6" href="">LAB 6</a>
                         <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".projetos" href="">Projetos</a>
+                        <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".mini" href="">Mini auditório</a>
                         <div class="scrollup fa fa-angle-double-up" title="Go to top"> ^ </div>
                         <script>
                             // scrolltop
