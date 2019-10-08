@@ -90,8 +90,16 @@ table {
     text-decoration: none;
     cursor: pointer;
 }
+.userLink{
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 a:link:active, a:visited:active {
+    color: #f8f9fa;
+}
+.userLink:link:active, .userLink:visited:active {
     color: #f8f9fa;
 }
 .right {
