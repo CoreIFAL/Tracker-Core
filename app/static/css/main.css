@@ -31,11 +31,14 @@ html, body{
 }
 .containersG{
     background-color: #f8f9fac8;
-    display: grid;
-    grid-column: span;
+    display: table;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
     width: 100%;
     height: 100%;
-    text-align: center;    
 }
 table, th, td {
     border: 1px solid black;

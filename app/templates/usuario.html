@@ -1,7 +1,7 @@
 <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
     <head>
         <!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>NOME DA PLANILHA</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->
-        <title>user['event']</title>
+        <title>Tracker core</title>
         <link rel="icon" type="image/png" href="../static/images/Traker core logo.png"/>
         <link rel="stylesheet" type="text/css" href="../static/css/main.css">
         <script type="text/javascript" src="../static/js/script.js"></script>
@@ -86,7 +86,7 @@
                     <div class="container-fluid ">
                   
                       <div class="navbar-header">
-                        <a class="navbar-brand inactiveLink" href="#">Acessos</a>
+                        <a class="navbar-brand inactiveLink" href="#">{{user['name']}}</a>
                       </div>
                       <div class="nav navbar">
                         <li class="nav-item dropdown">
@@ -117,7 +117,6 @@
                     <table style="width:90%; margin-left: 5%;background-color: #343a40; color: #f8f9fa;">
                         <thead >
                             <tr id="tabelaInfo" class="table-item lab1 lab2 lab3 lab4 lab5 lab6 projetos mini" >
-                                <th width="25%">Usuario</th>
                                 <th width="25%">PC</th>
                                 <th width="25%">Status</th>
                                 <th width="25%">Data - Hora(GMT-3)</th>
@@ -132,23 +131,23 @@
                                 {% for evento in user['event'] %}
                                 {% set u = user['event']['computername'] %}
                                 {% if 'L01' in u %}
-                                    <tr id="tabelaInfo" class="table-item" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    <tr id="tabelaInfo" class="table-item" style="background-color: #343a4064; color: #000000">
                                 {% elif 'L02' in u %}
-                                    <tr id="tabelaInfo" class="table-item" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    <tr id="tabelaInfo" class="table-item" style="background-color: #343a4064; color: #000000">
                                 {% elif 'L03' in u %}
-                                    <tr id="tabelaInfo" class="table-item" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    <tr id="tabelaInfo" class="table-item" style="background-color: #343a4064; color: #000000">
                                 {% elif 'L04' in u %}
-                                    <tr id="tabelaInfo" class="table-item" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    <tr id="tabelaInfo" class="table-item" style="background-color: #343a4064; color: #000000">
                                 {% elif 'L05' in u %}
-                                    <tr id="tabelaInfo" class="table-item" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    <tr id="tabelaInfo" class="table-item" style="background-color: #343a4064; color: #000000">
                                 {% elif 'L06' in u %}
-                                    <tr id="tabelaInfo" class="table-item" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
+                                    <tr id="tabelaInfo" class="table-item" style="background-color: #343a4064; color: #000000">
                                 {% elif 'PROJ' in u %}
-                                    <tr id="tabelaInfo" class="table-item" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000"> 
+                                    <tr id="tabelaInfo" class="table-item" style="background-color: #343a4064; color: #000000"> 
                                 {% elif 'MINI' in u %}
-                                    <tr id="tabelaInfo" class="table-item" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">                                     
+                                    <tr id="tabelaInfo" class="table-item" style="background-color: #343a4064; color: #000000">                                     
                                 {% else %}
-                                    <tr style="background-color: #343a4064; color: #f8f9fa">
+                                    <tr style="background-color: #343a4064; color: #000000">
                                 {% endif %}
                                     <td width="25%">{{evento['computername']}}</td>
                                     <td width="25%">{{evento['operation']}}</td>

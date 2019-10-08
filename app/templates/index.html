@@ -61,6 +61,16 @@
                 </div>
             </div>
         </div>
+        <table style="width:76.5%; margin-left: 4.3%;background-color: #343a40; color: #f8f9fa; position: fixed; z-index: 9;">
+            <thead >
+                <tr id="tabelaInfo" class="table-item lab1 lab2 lab3 lab4 lab5 lab6 projetos mini" >
+                    <th width="25%">Usuario</th>
+                    <th width="25%">PC</th>
+                    <th width="25%">Status</th>
+                    <th width="25%">Data - Hora(GMT-3)</th>
+                </tr>
+            </thead>
+        </table>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="z-index: 10;">
                 <img src="../static/images/Traker core logo bar.svg" alt="" width="100px" height="auto">
                 <a class="navbar-brand inactiveLink" href=""><h1>Tracker Core</h1></a>
@@ -208,9 +218,9 @@
                                 {% elif 'MINI' in u %}
                                     <tr id="tabelaInfo" class="table-item mini" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">                                     
                                 {% else %}
-                                    <tr style="background-color: #343a4064; color: #f8f9fa">
+                                    <tr style="background-color: #343a4064; color: #000000">
                                 {% endif %}
-                                    <th id={{user['name']}} width="25%"><a href="#" style="color: #000000; cursor:pointer; text-decoration: none;">{{user['name']}}</a></th>
+                                    <th id={{user['name']}} width="25%"><a href="{{url_for('main.get_user', username=user['name'])}}" style="color: #000000; cursor:pointer; text-decoration: none;">{{user['name']}}</a></th>
                                     <td width="25%">{{user['event']['computername']}}</td>
                                     <td width="25%">{{user['event']['operation']}}</td>
                                     <td width="25%">{{user['event']['date']}} - {{user['event']['time']}}</td>
@@ -244,9 +254,9 @@
                                     {% elif 'MINI' in u %}
                                         <tr id="tabelaInfo" class="table-item row mini" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">                                      
                                     {% else %}
-                                        <tr style="background-color: #343a4064; color: #f8f9fa">
+                                        <tr style="background-color: #343a4064; color: #000000">
                                     {% endif %}
-                                        <th id={{user['name']}} class="col-12 col-md-3"><a style="color: #000000; cursor:pointer; text-decoration: none;" href="#">{{user['name']}}</a></th>
+                                        <th id={{user['name']}} class="col-12 col-md-3"><a style="color: #000000; cursor:pointer; text-decoration: none;" href="{{url_for('main.get_user', username=user['name'])}}">{{user['name']}}</a></th>
                                         <td class="col-12 col-md-3">{{user['event']['computername']}}</td>
                                         <td class="col-12 col-md-3">{{user['event']['operation']}}</td>
                                         <td class="col-12 col-md-3">{{user['event']['date']}} - {{user['event']['time']}}</td>

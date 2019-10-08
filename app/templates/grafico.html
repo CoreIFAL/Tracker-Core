@@ -65,8 +65,6 @@
                         title:'Uso dos Laboratórios',
                         subtitle: 'Últimos 30 dias'
                     },                       
-                    width: "1200",
-                    height: "600",
                     backgroundColor: { fill:'transparent' },
                         axes: {
                         y: {
@@ -81,6 +79,8 @@
                     window.location("http://chart.googleapis.com/")
                 }
                 chart.draw(data, google.charts.Line.convertOptions(options));
+                var container = document.getElementById("graficoLabs").firstChild.firstChild;
+                container.style.width = "100%";
             }
             
         </script>
@@ -100,7 +100,7 @@
                 </div>
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="z-index: 10">
                 <img src="../static/images/Traker core logo bar.svg" alt="" width="100px" height="auto">
                 <a class="navbar-brand inactiveLink" href=""><h1>Tracker Core</h1></a>
                 <div class="nav navbar-right">
@@ -121,7 +121,7 @@
                     </ul>
                 </div>
             </nav>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="z-index: 10">
                     <div class="container-fluid ">
                   
                       <div class="navbar-header">
@@ -153,12 +153,8 @@
         <div class="corpo">
             <div id="line_top_x"></div>
             <div class="containersG">
-                <div id="graficoLabs"></div>
-            </div>
-            <nav class="filter-button-group containerLateral">
-                <div style="position: fixed;">
-                </div>
-            </nav>
+                <div style="position: absolute; top: 17%; left: 1%; width:98%; height: 82%" id="graficoLabs"></div>
+            </div>            
         </div>
         
     </body>
