@@ -4,7 +4,6 @@
         <title>Traker Core</title>
         <link rel="icon" type="image/png" href="../static/images/Traker core logo.png"/>
         <link rel="stylesheet" type="text/css" href="../static/css/main.css">
-        <script type="text/javascript" src="../static/js/script.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -97,6 +96,15 @@
                   
                       <div class="navbar-header">
                         <a class="navbar-brand inactiveLink" href="#">Acessos</a>
+                        <a id="bA" class="navbar-brand inactiveLink" style="display: ''" href="#">Todos os Labs</a>
+                        <a id="b1" class="navbar-brand inactiveLink" style="display: none" href="#">Lab1</a>
+                        <a id="b2" class="navbar-brand inactiveLink" style="display: none" href="#">Lab2</a>
+                        <a id="b3" class="navbar-brand inactiveLink" style="display: none" href="#">Lab3</a>
+                        <a id="b4" class="navbar-brand inactiveLink" style="display: none" href="#">Lab4</a>
+                        <a id="b5" class="navbar-brand inactiveLink" style="display: none" href="#">Lab5</a>
+                        <a id="b6" class="navbar-brand inactiveLink" style="display: none" href="#">Lab6</a>
+                        <a id="bP" class="navbar-brand inactiveLink" style="display: none" href="#">Projetos</a>
+                        <a id="bM" class="navbar-brand inactiveLink" style="display: none" href="#">Mini auditório</a>
                       </div>
                   
                       <div class="navbar-nav mr-auto">
@@ -117,7 +125,7 @@
                                         document.getElementById("searcher").style.display = "";
                                         document.getElementById("campoPesquisaU").style.display = "";
                                         document.getElementById("campoPesquisaM").style.display = "";
-                                        $( '.filter-button-group a' ).removeClass( "lab1 lab2 lab3 lab4 lab5 lab6 projetos" );
+                                        $( '.filter-button-group a' ).removeClass( "lab1 lab2 lab3 lab4 lab5 lab6 projetos mini" );
 
                                         var filterValue = $( this ).attr( 'data-filter' );
                                         $table.isotope( {
@@ -142,7 +150,7 @@
                                         document.getElementById("volB").style.display = "none";
                                         document.getElementById("pesB").style.display = "";
                                         document.getElementById("tabela").style.display = "";
-                                        $( this ).addClass( "lab1 lab2 lab3 lab4 lab5 lab6 projetos" );
+                                        $( this ).addClass( "lab1 lab2 lab3 lab4 lab5 lab6 projetos mini" );
 
                                         var filterValue = $( this ).attr( 'data-filter' );
                                         $table.isotope( {
@@ -289,15 +297,117 @@
             </div>
         <div class="filter-button-group containerLateral">
             <div class="containerL" style="position: fixed;">
-                    <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter="*" href="">Todos os LABS</a>
-                    <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab1" href="">LAB 1</a>
-                    <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab2" href="">LAB 2</a>
-                    <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab3" href="">LAB 3</a>
-                    <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab4" href="">LAB 4</a>
-                    <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab5" href="">LAB 5</a>
-                    <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".lab6" href="">LAB 6</a>
-                    <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".projetos" href="">Projetos</a>
-                    <a class="nav-item nav-link lateralLink" onclick="addC();" data-filter=".mini" href="">Mini auditório</a>
+                    <a class="nav-item nav-link lateralLink" onclick="addC(); BA();" data-filter="*" href="">Todos os LABS</a>
+                    <a class="nav-item nav-link lateralLink" onclick="addC(); B1();" data-filter=".lab1" href="">LAB 1</a>
+                    <a class="nav-item nav-link lateralLink" onclick="addC(); B2();" data-filter=".lab2" href="">LAB 2</a>
+                    <a class="nav-item nav-link lateralLink" onclick="addC(); B3();" data-filter=".lab3" href="">LAB 3</a>
+                    <a class="nav-item nav-link lateralLink" onclick="addC(); B4();" data-filter=".lab4" href="">LAB 4</a>
+                    <a class="nav-item nav-link lateralLink" onclick="addC(); B5();" data-filter=".lab5" href="">LAB 5</a>
+                    <a class="nav-item nav-link lateralLink" onclick="addC(); B6();" data-filter=".lab6" href="">LAB 6</a>
+                    <a class="nav-item nav-link lateralLink" onclick="addC(); BP();" data-filter=".projetos" href="">Projetos</a>
+                    <a class="nav-item nav-link lateralLink" onclick="addC(); BM();" data-filter=".mini" href="">Mini auditório</a>
+                    <script>
+                            function BA(){
+                                document.getElementById("bA").style.display = "";
+                                document.getElementById("b1").style.display = "none";
+                                document.getElementById("b2").style.display = "none";
+                                document.getElementById("b3").style.display = "none";
+                                document.getElementById("b4").style.display = "none";
+                                document.getElementById("b5").style.display = "none";
+                                document.getElementById("b6").style.display = "none";
+                                document.getElementById("bP").style.display = "none";
+                                document.getElementById("bM").style.display = "none";
+                            }
+                            function B1(){
+                                document.getElementById("bA").style.display = "none";
+                                document.getElementById("b1").style.display = "";
+                                document.getElementById("b2").style.display = "none";
+                                document.getElementById("b3").style.display = "none";
+                                document.getElementById("b4").style.display = "none";
+                                document.getElementById("b5").style.display = "none";
+                                document.getElementById("b6").style.display = "none";
+                                document.getElementById("bP").style.display = "none";
+                                document.getElementById("bM").style.display = "none";
+                            }
+                            function B2(){
+                                document.getElementById("bA").style.display = "none";
+                                document.getElementById("b1").style.display = "none";
+                                document.getElementById("b2").style.display = "";
+                                document.getElementById("b3").style.display = "none";
+                                document.getElementById("b4").style.display = "none";
+                                document.getElementById("b5").style.display = "none";
+                                document.getElementById("b6").style.display = "none";
+                                document.getElementById("bP").style.display = "none";
+                                document.getElementById("bM").style.display = "none";
+                            }
+                            function B3(){
+                                document.getElementById("bA").style.display = "none";
+                                document.getElementById("b1").style.display = "none";
+                                document.getElementById("b2").style.display = "none";
+                                document.getElementById("b3").style.display = "";
+                                document.getElementById("b4").style.display = "none";
+                                document.getElementById("b5").style.display = "none";
+                                document.getElementById("b6").style.display = "none";
+                                document.getElementById("bP").style.display = "none";
+                                document.getElementById("bM").style.display = "none";
+                            }
+                            function B4(){
+                                document.getElementById("bA").style.display = "none";
+                                document.getElementById("b1").style.display = "none";
+                                document.getElementById("b2").style.display = "none";
+                                document.getElementById("b3").style.display = "none";
+                                document.getElementById("b4").style.display = "";
+                                document.getElementById("b5").style.display = "none";
+                                document.getElementById("b6").style.display = "none";
+                                document.getElementById("bP").style.display = "none";
+                                document.getElementById("bM").style.display = "none";
+                            }
+                            function B5(){
+                                document.getElementById("bA").style.display = "none";
+                                document.getElementById("b1").style.display = "none";
+                                document.getElementById("b2").style.display = "none";
+                                document.getElementById("b3").style.display = "none";
+                                document.getElementById("b4").style.display = "none";
+                                document.getElementById("b5").style.display = "";
+                                document.getElementById("b6").style.display = "none";
+                                document.getElementById("bP").style.display = "none";
+                                document.getElementById("bM").style.display = "none";
+                            }
+                            function B6(){
+                                document.getElementById("bA").style.display = "none";
+                                document.getElementById("b1").style.display = "none";
+                                document.getElementById("b2").style.display = "none";
+                                document.getElementById("b3").style.display = "none";
+                                document.getElementById("b4").style.display = "none";
+                                document.getElementById("b5").style.display = "none";
+                                document.getElementById("b6").style.display = "";
+                                document.getElementById("bP").style.display = "none";
+                                document.getElementById("bM").style.display = "none";
+                            }
+                            function BP(){
+                                document.getElementById("bA").style.display = "none";
+                                document.getElementById("b1").style.display = "none";
+                                document.getElementById("b2").style.display = "none";
+                                document.getElementById("b3").style.display = "none";
+                                document.getElementById("b4").style.display = "none";
+                                document.getElementById("b5").style.display = "none";
+                                document.getElementById("b6").style.display = "none";
+                                document.getElementById("bP").style.display = "";
+                                document.getElementById("bM").style.display = "none";
+                            }
+                            function BM(){
+                                document.getElementById("bA").style.display = "none";
+                                document.getElementById("b1").style.display = "none";
+                                document.getElementById("b2").style.display = "none";
+                                document.getElementById("b3").style.display = "none";
+                                document.getElementById("b4").style.display = "none";
+                                document.getElementById("b5").style.display = "none";
+                                document.getElementById("b6").style.display = "none";
+                                document.getElementById("bP").style.display = "none";
+                                document.getElementById("bM").style.display = "";
+                            }
+                            
+                        </script>
                     <div class="scrollup fa fa-angle-double-up" title="Go to top"> ^ </div>
                     <script>
                         // scrolltop
@@ -308,6 +418,7 @@
                     return false;
                     });
                     </script>
+                    
             </div>
         </div>
         </div>

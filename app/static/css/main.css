@@ -21,6 +21,12 @@ html, body{
 #campoPesquisa {
     border: 1px solid #ddd; /* Add a grey border */
 }
+br {
+    display: block;
+    margin: 10px 0;
+    line-height:20%;
+    content: " ";
+ }
 .containers{
     background-color: #f8f9fac8;
     display: table;
@@ -32,11 +38,6 @@ html, body{
 .containersG{
     background-color: #f8f9fac8;
     display: table;
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 0;
-    margin: 0;
     width: 100%;
     height: 100%;
 }
@@ -99,6 +100,10 @@ table {
     cursor: pointer;
 }
 
+a:link:hover, a:visited:hover {
+    color: #cacbcc;
+    text-decoration: underline;
+}
 a:link:active, a:visited:active {
     color: #f8f9fa;
 }
