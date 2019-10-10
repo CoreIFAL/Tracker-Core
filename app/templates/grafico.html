@@ -19,7 +19,7 @@
             google.charts.setOnLoadCallback(drawChart);
             function drawChart() {
                 var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Acessos');
+                data.addColumn('string', 'Acessos por dia');
                 data.addColumn('number', 'LAB 1');
                 data.addColumn('number', 'LAB 2');
                 data.addColumn('number', 'LAB 3');
@@ -62,26 +62,22 @@
                 var options = {
                     chart:{
                         title:'Uso dos Laboratórios',
-                        subtitle: 'Últimos 30 dias'
+                        subtitle: 'Últimos 30 dias',
                     },                       
                     backgroundColor: { fill:'transparent' },
-                        axes: {
-                        y: {
-                            0: {side: 'left'}
-                        }
-                        }
-                    };
-                    
+                    };  
                 var div = document.getElementById('graficoLabs');
                 var chart = new google.charts.Line(div);
-                function salvaGrafico(){
-                    window.location("http://chart.googleapis.com/")
-                }
+
                 chart.draw(data, google.charts.Line.convertOptions(options));
-                var container = document.getElementById("graficoLabs").firstChild.firstChild;
-                container.style.width = "100%";
-            }
-            
+
+                google.visualization.events.addListener(table, 'select', selectHandler);
+
+                // The selection handler.
+                // Loop through all items in the selection and concatenate
+                // a single message from all of them.
+                
+            }            
         </script>
     </head>
     <body>
@@ -143,7 +139,6 @@
                                 </li>-->
                             <li><a class="btn btn-prymary btn-sm" href="">Atualizar</a></li>
                             <li><div class="dropdown-divider"></div></li>
-                            <li><a class="btn btn-prymary btn-sm" onclick="salvaGrafico();" href="#">Salvar</a></li>
                         </div>
                         </li>
                       </div>
@@ -152,7 +147,7 @@
         <div class="corpo">
             <div id="line_top_x"></div>
             <div class="containersG">
-                <div style="position: absolute; top: 17%; left: 1%; width:98%; height: 82%" id="graficoLabs"></div>
+                <div style="position: fixed; top: 17%; left: 1%; width:98%; height: 82%" id="graficoLabs"></div>
             </div>            
         </div>
         

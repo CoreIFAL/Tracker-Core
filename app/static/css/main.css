@@ -10,7 +10,7 @@ html, body{
     background-position: center;
     background-attachment:fixed;
     background-size: 100%,100%;*/
-    height: 100%;
+
 }
 .corpo{
     display: flex;
@@ -139,7 +139,7 @@ a:link:active, a:visited:active {
     }
     .containerLateral{
         background-color: #343a40;
-        width: 30%;
+        width: 15%;
     }
 }
 
@@ -162,7 +162,7 @@ a:link:active, a:visited:active {
     }
     .containerLateral{
         background-color: #343a40;
-        width: 30%;
+        width: 15%;
     }   
 
 }
