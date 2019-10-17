@@ -3,7 +3,6 @@ $( window ).load( function () {
 		itemSelector: '.table-item',
 	} );
 
-
 	$( '.filter-button-group' ).on( 'click', 'a', function () {
 
 		$( '.filter-button-group a' ).removeClass( "current" );

@@ -107,7 +107,7 @@
                       </div>
                       <div class="navbar-nav mr-auto">
                         <ul class="nav navbar-nav" style="display: flex; flex-direction: row">
-                            <a class="nav-item nav-link" href="javascript:history.back()">Voltar</a>
+                            <a class="nav-item nav-link" href="{{url_for('main.index')}}">Voltar</a>
                         </ul>
                   
                       </div>
@@ -315,15 +315,21 @@
                             }    
                     </script>
                     <div class="scrollup fa fa-angle-double-up" title="Go to top"> ^ </div>
+                    <div class="scrolldown fa fa-angle-double-up" title="Go to bottom"> v </div>
                     <script>
                         // scrolltop
-                    $('.scrollup').click(function (){
-                    $("html,body").animate({
-                    scrollTop: 0
-                    }, 1000);
-                    return false;
-                    });
+                        $('.scrollup').click(function (){
+                            $("html,body").animate({scrollTop: 0}, 1000);
+                        });
                     </script>
+                    <script>
+                        $('.scrolldown').click(function(){
+                            event.preventDefault();
+                            var n = $(document).height();
+                            $('html, body').animate({scrollTop: n}, 1000);
+                        });
+                    </script>
+
             </div>
         </div>
         </div>

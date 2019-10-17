@@ -10,6 +10,19 @@ html, body{
     background-position: center;
     background-attachment:fixed;
     background-size: 100%,100%;*/
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+body {
+    overflow-x: hidden;
 
 }
 .corpo{
@@ -70,6 +83,25 @@ table {
     outline: none;
 }
 .scrollup:hover {
+    background-color: #343a4064;
+    color: white;
+}
+.scrolldown{
+    font-size: 20px;color: black; background-color: #f8f9fac8;
+    border: 1px solid #A2A2A2;
+    text-align: center;
+    padding: 6px;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 30px;
+    right:80px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+.scrolldown:hover {
     background-color: #343a4064;
     color: white;
 }

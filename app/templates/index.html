@@ -194,7 +194,7 @@
                 <div>
                     <table style="width:90%; margin-left: 5%;background-color: #343a40; color: #f8f9fa;">
                         <thead >
-                            <tr id="tabelaInfo" class="table-item lab1 lab2 lab3 lab4 lab5 lab6 projetos mini" >
+                            <tr id="tabelaInfo" class="table-item lab1 lab2 lab3 lab4 lab5 lab6 projetos mini">
                                 <th width="25%">Usuario</th>
                                 <th width="25%">PC</th>
                                 <th width="25%">Status</th>
@@ -409,14 +409,19 @@
                             
                         </script>
                     <div class="scrollup fa fa-angle-double-up" title="Go to top"> ^ </div>
+                    <div class="scrolldown fa fa-angle-double-up" title="Go to bottom"> v </div>
                     <script>
                         // scrolltop
-                    $('.scrollup').click(function (){
-                    $("html,body").animate({
-                    scrollTop: 0
-                    }, 1000);
-                    return false;
-                    });
+                        $('.scrollup').click(function (){
+                            $("html,body").animate({scrollTop: 0}, 1000);
+                        });
+                    </script>
+                    <script>
+                        $('.scrolldown').click(function(){
+                            event.preventDefault();
+                            var n = $(document).height();
+                            $('html, body').animate({scrollTop: n}, 1000);
+                        });
                     </script>
                     
             </div>
