@@ -3,6 +3,7 @@ from flask import render_template
 from app.main import bp
 from app.main.controller import list_active_sessions
 from app.main.controller import get_data_by_username
+from app.main.controller import how_many_access_by_labs
 from app.models.user import User
 from app.database import DB
 
@@ -14,7 +15,8 @@ def index():
 
 @bp.route('/grafico')
 def chart():
-    return render_template('grafico.html')
+    lista = how_many_access_by_labs()
+    return render_template('grafico.html', lista=lista)
 
 @bp.route('/user/<username>')
 def get_user(username):
