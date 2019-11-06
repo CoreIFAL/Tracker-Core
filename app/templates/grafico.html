@@ -28,7 +28,8 @@
                 data.addColumn('number', 'LAB 6');
                 data.addColumn('number', 'Projetos');
                 {% for i in datas.keys() %}
-                    data.addRow([{{str(i)}}, {{datas[i][0]}}, {{datas[i][1]}}, {{datas[i][2]}}, {{datas[i][3]}}, {{datas[i][4]}}, {{datas[i][5]}}, {{datas[i][6]}}])
+                    var data_fmt= '{{i}}'
+                    data.addRow([data_fmt, {{datas[i][0]}}, {{datas[i][1]}}, {{datas[i][2]}}, {{datas[i][3]}}, {{datas[i][4]}}, {{datas[i][5]}}, {{datas[i][6]}}])
                 {% endfor %}
                 
                 // data.addRows([
@@ -81,7 +82,7 @@
                 // Loop through all items in the selection and concatenate
                 // a single message from all of them.
                 
-            }            
+                }            
         </script>
     </head>
     <body>
