@@ -15,8 +15,8 @@ def index():
 
 @bp.route('/grafico')
 def chart():
-    lista = how_many_access_by_labs()
-    return render_template('grafico.html', lista=lista)
+    access_by_dates = how_many_access_by_labs()
+    return render_template('grafico.html', datas=access_by_dates)
 
 @bp.route('/user/<username>')
 def get_user(username):

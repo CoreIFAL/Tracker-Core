@@ -27,38 +27,42 @@
                 data.addColumn('number', 'LAB 5');
                 data.addColumn('number', 'LAB 6');
                 data.addColumn('number', 'Projetos');
-                data.addRows([
-                    ['30 dias atrás', 10, 4, 4, 5, 4, 20, 1],
-                    ['29 dias atrás', 12, 5, 8, 3, 4, 9, 0],
-                    ['28 dias atrás', 6, 11, 9, 7, 2, 17, 2],
-                    ['27 dias atrás', 10, 4, 4, 5, 4, 12, 1],
-                    ['26 dias atrás', 12, 5, 8, 3, 4, 22, 0],
-                    ['25 dias atrás', 6, 11, 9, 7, 2, 14, 2],
-                    ['24 dias atrás', 10, 4, 4, 5, 4, 30, 1],
-                    ['23 dias atrás', 12, 5, 8, 3, 4, 7, 0],
-                    ['21 dias atrás', 6, 11, 9, 7, 2, 6, 2],
-                    ['20 dias atrás', 10, 4, 4, 5, 4, 8, 1],
-                    ['19 dias atrás', 12, 5, 8, 3, 4, 5, 0],
-                    ['18 dias atrás', 6, 11, 9, 7, 2, 9, 2],
-                    ['17 dias atrás', 10, 4, 4, 5, 4, 7, 1],
-                    ['16 dias atrás', 12, 5, 8, 3, 4, 20, 0],
-                    ['15 dias atrás', 6, 11, 9, 7, 2, 50, 2],
-                    ['14 dias atrás', 10, 4, 4, 5, 4, 35, 1],
-                    ['13 dias atrás', 12, 5, 8, 3, 4, 41, 0],
-                    ['12 dias atrás', 6, 11, 9, 7, 2, 20, 2],
-                    ['11 dias atrás', 10, 4, 4, 5, 4, 5, 1],
-                    ['10 dias atrás', 12, 5, 8, 3, 4, 9, 0],
-                    ['09 dias atrás', 6, 11, 9, 7, 2, 5, 2],
-                    ['08 dias atrás', 10, 4, 4, 5, 4, 5, 1],
-                    ['07 dias atrás', 12, 5, 8, 3, 4, 9, 0],
-                    ['06 dias atrás', 6, 11, 9, 7, 2, 5, 2],
-                    ['05 dias atrás', 10, 4, 4, 5, 4, 5, 1],
-                    ['04 dias atrás', 12, 5, 8, 3, 4, 9, 0],
-                    ['03 dias atrás', 6, 11, 9, 7, 2, 5, 2],
-                    ['02 dias atrás', 10, 4, 4, 5, 4, 5, 1],
-                    ['Ontem', 12, 5, 8, 3, 4, 9, 0],
-                    ['Hoje', 1, 5, 5, 9, 5, 5, 1]
-                ]);
+                {% for i in datas.keys() %}
+                    data.addRow([{{str(i)}}, {{datas[i][0]}}, {{datas[i][1]}}, {{datas[i][2]}}, {{datas[i][3]}}, {{datas[i][4]}}, {{datas[i][5]}}, {{datas[i][6]}}])
+                {% endfor %}
+                
+                // data.addRows([
+                //     ['30 dias atrás', 10, 4, 4, 5, 4, 20, 1],
+                //     ['29 dias atrás', 12, 5, 8, 3, 4, 9, 0],
+                //     ['28 dias atrás', 6, 11, 9, 7, 2, 17, 2],
+                //     ['27 dias atrás', 10, 4, 4, 5, 4, 12, 1],
+                //     ['26 dias atrás', 12, 5, 8, 3, 4, 22, 0],
+                //     ['25 dias atrás', 6, 11, 9, 7, 2, 14, 2],
+                //     ['24 dias atrás', 10, 4, 4, 5, 4, 30, 1],
+                //     ['23 dias atrás', 12, 5, 8, 3, 4, 7, 0],
+                //     ['21 dias atrás', 6, 11, 9, 7, 2, 6, 2],
+                //     ['20 dias atrás', 10, 4, 4, 5, 4, 8, 1],
+                //     ['19 dias atrás', 12, 5, 8, 3, 4, 5, 0],
+                //     ['18 dias atrás', 6, 11, 9, 7, 2, 9, 2],
+                //     ['17 dias atrás', 10, 4, 4, 5, 4, 7, 1],
+                //     ['16 dias atrás', 12, 5, 8, 3, 4, 20, 0],
+                //     ['15 dias atrás', 6, 11, 9, 7, 2, 50, 2],
+                //     ['14 dias atrás', 10, 4, 4, 5, 4, 35, 1],
+                //     ['13 dias atrás', 12, 5, 8, 3, 4, 41, 0],
+                //     ['12 dias atrás', 6, 11, 9, 7, 2, 20, 2],
+                //     ['11 dias atrás', 10, 4, 4, 5, 4, 5, 1],
+                //     ['10 dias atrás', 12, 5, 8, 3, 4, 9, 0],
+                //     ['09 dias atrás', 6, 11, 9, 7, 2, 5, 2],
+                //     ['08 dias atrás', 10, 4, 4, 5, 4, 5, 1],
+                //     ['07 dias atrás', 12, 5, 8, 3, 4, 9, 0],
+                //     ['06 dias atrás', 6, 11, 9, 7, 2, 5, 2],
+                //     ['05 dias atrás', 10, 4, 4, 5, 4, 5, 1],
+                //     ['04 dias atrás', 12, 5, 8, 3, 4, 9, 0],
+                //     ['03 dias atrás', 6, 11, 9, 7, 2, 5, 2],
+                //     ['02 dias atrás', 10, 4, 4, 5, 4, 5, 1],
+                //     ['Ontem', 12, 5, 8, 3, 4, 9, 0],
+                //     ['Hoje', 1, 5, 5, 9, 5, 5, 1]
+                // ]);
                 var options = {
                     chart:{
                         title:'Uso dos Laboratórios',
@@ -81,6 +85,8 @@
         </script>
     </head>
     <body>
+
+
         <div class="carousel slide carousel-fade" data-ride="carousel" data-interval="30000">
 
             <!-- Wrapper for slides -->
