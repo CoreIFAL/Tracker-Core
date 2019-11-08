@@ -104,6 +104,7 @@
                         <a id="b6" class="navbar-brand inactiveLink" style="display: none" href="#">Lab6</a>
                         <a id="bP" class="navbar-brand inactiveLink" style="display: none" href="#">Projetos</a>
                         <a id="bM" class="navbar-brand inactiveLink" style="display: none" href="#">Mini auditório</a>
+                        <a id="bS" class="navbar-brand inactiveLink" style="display: none" href="#">Sala dos Professores</a>
                       </div>
                       <div class="navbar-nav mr-auto">
                         <ul class="nav navbar-nav" style="display: flex; flex-direction: row">
@@ -168,7 +169,9 @@
                                 {% elif 'PROJ' in u %}
                                     <tr id="tabelaInfo" class="table-item row projetos" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
                                 {% elif 'MINI' in u %}
-                                    <tr id="tabelaInfo" class="table-item row mini" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">                                      
+                                    <tr id="tabelaInfo" class="table-item row mini" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">    
+                                {% elif 'PROF' in u %}
+                                    <tr id="tabelaInfo" class="table-item row prof" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">                                   
                                 {% else %}
                                     <tr style="background-color: #343a4064; color: #000000">
                                 {% endif %}
@@ -213,6 +216,7 @@
                     <a class="nav-item nav-link lateralLink" onclick="B6();" data-filter=".lab6" href="">LAB 6</a>
                     <a class="nav-item nav-link lateralLink" onclick="BP();" data-filter=".projetos" href="">Projetos</a>
                     <a class="nav-item nav-link lateralLink" onclick="BM();" data-filter=".mini" href="">Mini auditório</a>
+                    <a class="nav-item nav-link lateralLink" onclick="addC(); BS();" data-filter=".prof" href="">Sala dos Professores</a>
                     <script>
                             function BA(){
                                 document.getElementById("bA").style.display = "";
@@ -224,6 +228,7 @@
                                 document.getElementById("b6").style.display = "none";
                                 document.getElementById("bP").style.display = "none";
                                 document.getElementById("bM").style.display = "none";
+                                document.getElementById("bS").style.display = "none";
                             }
                             function B1(){
                                 document.getElementById("bA").style.display = "none";
@@ -235,6 +240,7 @@
                                 document.getElementById("b6").style.display = "none";
                                 document.getElementById("bP").style.display = "none";
                                 document.getElementById("bM").style.display = "none";
+                                document.getElementById("bS").style.display = "none";
                             }
                             function B2(){
                                 document.getElementById("bA").style.display = "none";
@@ -246,6 +252,7 @@
                                 document.getElementById("b6").style.display = "none";
                                 document.getElementById("bP").style.display = "none";
                                 document.getElementById("bM").style.display = "none";
+                                document.getElementById("bS").style.display = "none";
                             }
                             function B3(){
                                 document.getElementById("bA").style.display = "none";
@@ -257,6 +264,7 @@
                                 document.getElementById("b6").style.display = "none";
                                 document.getElementById("bP").style.display = "none";
                                 document.getElementById("bM").style.display = "none";
+                                document.getElementById("bS").style.display = "none";
                             }
                             function B4(){
                                 document.getElementById("bA").style.display = "none";
@@ -268,6 +276,7 @@
                                 document.getElementById("b6").style.display = "none";
                                 document.getElementById("bP").style.display = "none";
                                 document.getElementById("bM").style.display = "none";
+                                document.getElementById("bS").style.display = "none";
                             }
                             function B5(){
                                 document.getElementById("bA").style.display = "none";
@@ -279,6 +288,7 @@
                                 document.getElementById("b6").style.display = "none";
                                 document.getElementById("bP").style.display = "none";
                                 document.getElementById("bM").style.display = "none";
+                                document.getElementById("bS").style.display = "none";
                             }
                             function B6(){
                                 document.getElementById("bA").style.display = "none";
@@ -290,6 +300,7 @@
                                 document.getElementById("b6").style.display = "";
                                 document.getElementById("bP").style.display = "none";
                                 document.getElementById("bM").style.display = "none";
+                                document.getElementById("bS").style.display = "none";
                             }
                             function BP(){
                                 document.getElementById("bA").style.display = "none";
@@ -301,6 +312,7 @@
                                 document.getElementById("b6").style.display = "none";
                                 document.getElementById("bP").style.display = "";
                                 document.getElementById("bM").style.display = "none";
+                                document.getElementById("bS").style.display = "none";
                             }
                             function BM(){
                                 document.getElementById("bA").style.display = "none";
@@ -312,7 +324,20 @@
                                 document.getElementById("b6").style.display = "none";
                                 document.getElementById("bP").style.display = "none";
                                 document.getElementById("bM").style.display = "";
-                            }    
+                                document.getElementById("bS").style.display = "none";
+                            }
+                            function BS(){
+                                document.getElementById("bA").style.display = "none";
+                                document.getElementById("b1").style.display = "none";
+                                document.getElementById("b2").style.display = "none";
+                                document.getElementById("b3").style.display = "none";
+                                document.getElementById("b4").style.display = "none";
+                                document.getElementById("b5").style.display = "none";
+                                document.getElementById("b6").style.display = "none";
+                                document.getElementById("bP").style.display = "none";
+                                document.getElementById("bM").style.display = "none";
+                                document.getElementById("bS").style.display = "";
+                            }   
                     </script>
                     <div class="scrollup fa fa-angle-double-up" title="Go to top"> ^ </div>
                     <div class="scrolldown fa fa-angle-double-up" title="Go to bottom"> v </div>
