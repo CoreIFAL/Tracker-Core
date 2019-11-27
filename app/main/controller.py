@@ -3,14 +3,19 @@ from app.database import DB
 import pymongo
 import datetime
 
-def list_active_sessions(list_users):
+def list_active_sessions():
     active_sessions = []
-    for i in list_users:
-        #if i['event'][-1]['date'] == datetime.datetime.now().strftime("%d/%m/%Y") and i['event'][-1]['operation'] == 'logon' and 
-        if len(i['event']) % 2 != 0:
-            user = User(i['name'], i['event'][-1]['operation'], i['event'][-1]['computername'], i['event'][-1]['date'], i['event'][-1]['time'])
-            active_sessions.append(user)
+    for i in DB.DATABASE['users'].find({'active':1}):
+        print(i['name'], i['event'][-1]['date'], i['event'][-1]['computername'])
+        if i['active'] == 1 and i['event'][-1]['date'] < datetime.datetime.now().strftime("%d/%m/%Y"):
+            i['active'] = 0
+            DB.DATABASE['users'].update_one({"name":i['name']}, {"$set":{"active":0}})
+        active_sessions.append(i)
     return active_sessions
+
+def how_many_users_active():
+    query = {'active': 1}
+    return DB.DATABASE['users'].count_documents(query)
            
 def get_data_by_username(username):
     user = DB.find_one("users", {'name':username})
@@ -26,12 +31,11 @@ def how_many_access_by_labs():
                                     '$filter':{
                                     'input':'$event',
                                     'as':'event',
-                                    'cond':{'$and':[
-                                            {'$eq':['$$event.operation','logon']}
-                                    ]}
+                                    'cond':{'$eq':['$$event.operation','logon']}
+                                    }
                                 }
                             },
-                }},
+                },
                 {'$unwind':'$event'},
                 {'$match':{'$expr':{'$regexFind':{'input':'$event.computername', 'regex': i}}}},
                 {'$group':

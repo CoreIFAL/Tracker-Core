@@ -188,9 +188,12 @@
                       </div>
                     </div>
                   </nav>
+                  
         <div class="corpo">
             
             <div class="containers">
+
+                    <h1>NUMERO DE USUARIOS ATIVOS: {{ active }}</h1>
                 <div>
                     <table style="width:90%; margin-left: 5%;background-color: #343a40; color: #f8f9fa;">
                         <thead >
@@ -208,10 +211,10 @@
                         <tbody>
                             <div class="container">
                                 {% for user in lista_users %}
-                                {% set u = user['event']['computername'] %}
+                                {% set u = user['event'][-1]['computername'] %}
                                 {% if 'L01' in u %}
                                     <tr id="tabelaInfo" class="table-item lab1" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
-                                {% elif 'L02' in u %}
+                                {% elif 'L02' in u %} 
                                     <tr id="tabelaInfo" class="table-item lab2" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
                                 {% elif 'L03' in u %}
                                     <tr id="tabelaInfo" class="table-item lab3" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
@@ -229,9 +232,9 @@
                                     <tr style="background-color: #343a4064; color: #000000">
                                 {% endif %}
                                     <th id={{user['name']}} width="25%"><a href="{{url_for('main.get_user', username=user['name'])}}" style="color: #000000; cursor:pointer; text-decoration: none;">{{user['name']}}</a></th>
-                                    <td width="25%">{{user['event']['computername']}}</td>
-                                    <td width="25%">{{user['event']['operation']}}</td>
-                                    <td width="25%">{{user['event']['date']}} - {{user['event']['time']}}</td>
+                                    <td width="25%">{{user['event'][-1]['computername']}}</td>
+                                    <td width="25%">{{user['event'][-1]['operation']}}</td>
+                                    <td width="25%">{{user['event'][-1]['date']}} - {{user['event'][-1]['time']}}</td>
                                 </tr>
                                 {% endfor %}
                             </div>
@@ -242,9 +245,8 @@
                     <table id="tabela" style="width:90%; margin-left: 5%; display: ''">
                         <tbody>
                             <div class="container">
-                                
                                     {% for user in lista_users %}
-                                    {% set u = user['event']['computername'] %}
+                                    {% set u = user['event'][-1]['computername'] %}
                                     {% if 'L01' in u %}
                                         <tr id="tabelaInfo" class="table-item row lab1" style="width:90%; margin-left: 5%;background-color: #343a4064; color: #000000">
                                     {% elif 'L02' in u %}
@@ -265,9 +267,9 @@
                                         <tr style="background-color: #343a4064; color: #000000">
                                     {% endif %}
                                         <th id={{user['name']}} class="col-12 col-md-3"><a style="color: #000000; cursor:pointer; text-decoration: none;" href="{{url_for('main.get_user', username=user['name'])}}">{{user['name']}}</a></th>
-                                        <td class="col-12 col-md-3">{{user['event']['computername']}}</td>
-                                        <td class="col-12 col-md-3">{{user['event']['operation']}}</td>
-                                        <td class="col-12 col-md-3">{{user['event']['date']}} - {{user['event']['time']}}</td>
+                                        <td class="col-12 col-md-3">{{user['event'][-1]['computername']}}</td>
+                                        <td class="col-12 col-md-3">{{user['event'][-1]['operation']}}</td>
+                                        <td class="col-12 col-md-3">{{user['event'][-1]['date']}} - {{user['event'][-1]['time']}}</td>
                                     </tr>
                                     {% endfor %}
                                 

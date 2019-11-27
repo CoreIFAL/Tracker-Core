@@ -4,14 +4,15 @@ from app.main import bp
 from app.main.controller import list_active_sessions
 from app.main.controller import get_data_by_username
 from app.main.controller import how_many_access_by_labs
+from app.main.controller import how_many_users_active
 from app.models.user import User
 from app.database import DB
 
 @bp.route('/')
 def index():
-    lista_users = DB.find_all('users')
-    users_front = list_active_sessions(lista_users)
-    return render_template('index.html', lista_users=users_front,active=len(users_front))
+    users_front = list_active_sessions()
+    length = how_many_users_active()
+    return render_template('index.html', lista_users=users_front,active=length)
 
 @bp.route('/grafico')
 def chart():
