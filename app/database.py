@@ -1,13 +1,13 @@
 import pymongo
 class DB(object):
          
-    URI = "mongodb://192.168.16.5:27017"
+    URI = "mongodb://localhost:27017"
           
     @staticmethod
     def init():
         client = pymongo.MongoClient(DB.URI)
-        DB.DATABASE = client['trackerdb-dev']
-        mydb = client['trackerdb-dev']
+        DB.DATABASE = client['tracker-dev']
+        mydb = client['tracker-dev']
     @staticmethod
     def insert(collection, data):
         DB.DATABASE[collection].insert(data)

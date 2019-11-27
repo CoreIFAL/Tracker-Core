@@ -106,6 +106,7 @@
                         <a id="bP" class="navbar-brand inactiveLink" style="display: none" href="#">Projetos</a>
                         <a id="bM" class="navbar-brand inactiveLink" style="display: none" href="#">Mini auditório</a>
                         <a id="bS" class="navbar-brand inactiveLink" style="display: none" href="#">Sala dos Professores</a>
+                        <a class="navbar-brand inactiveLink">Usuários ativos agora: {{ active }}</a>
                       </div>
                   
                       <div class="navbar-nav mr-auto">
@@ -194,7 +195,6 @@
             
             <div class="containers">
 
-                    <h1>NUMERO DE USUARIOS ATIVOS: {{ active }}</h1>
                 <div>
                     <table style="width:90%; margin-left: 5%;background-color: #343a40; color: #f8f9fa;">
                         <thead >
@@ -436,7 +436,7 @@
                                 document.getElementById("bS").style.display = "";
                             }
                             
-                        </script>
+                        </script>    
                     <div class="scrollup fa fa-angle-double-up" title="Go to top"> ^ </div>
                     <div class="scrolldown fa fa-angle-double-up" title="Go to bottom"> v </div>
                     <script>
